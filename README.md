@@ -12,7 +12,7 @@
 
 ###
 
-<h3 align="center">A Physics enthusiast who solve and visualize the problem with programming</h3>
+<h3 align="center">A Physics student who solve and visualize the problem with programming</h3>
 
 - 📌 **We're from Chennai, India**
 - 💬 Ask me about **Python, R, GNU Octave and C**
