@@ -1,6 +1,6 @@
 <br clear="both">
 
-<h1 align="center">வணக்கம் 🙏🏽, We're Comphysics</h1>
+<h1 align="center">வணக்கம் 🙏🏽, This is Sunil Raj</h1>
 
 ###
 
