@@ -46,6 +46,9 @@
   <a href="http://www.open-std.org/jtc1/sc22/wg14/" target="_blank" rel="noreferrer">
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-original.svg" height="42" alt="c logo"  />
   <img width="12" /> </a>
+  <a href="https://isocpp.org/" target="_blank" rel="noreferrer">
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg" height="42" alt="C++ Icon"  />
+  <img width="12" /> </a>
   <a href="https://www.r-project.org/" target="_blank" rel="noreferrer">
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/r/r-original.svg" height="42" alt="r logo"  />
   <img width="12" /> </a>
