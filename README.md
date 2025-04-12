@@ -67,11 +67,6 @@
   <a href="https://www.arduino.cc/" target="_blank" rel="noreferrer">
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/arduino/arduino-original-wordmark.svg" height="42" alt="arduino logo"  />
   <img width="12" /> </a>
-  <a href="https://inkscape.org/" target="_blank" rel="noreferrer">
-  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/inkscape/inkscape-original.svg" height="42" alt="inkscape logo"  />
-  <img width="12" /> </a>
-  <a href="https://www.gimp.org/" target="_blank" rel="noreferrer">
-  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/gimp/gimp-original.svg" height="42" alt="gimp logo"  /> </a>
 </div>
 
 ###
