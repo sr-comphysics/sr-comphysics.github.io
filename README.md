@@ -40,9 +40,6 @@
   <a href="https://www.python.org/" target="_blank" rel="noreferrer">
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" height="42" alt="python logo"  />
   <img width="12" /> </a>
-  <a href="https://numpy.org/" target="_blank" rel="noreferrer">
-  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/numpy/numpy-original.svg" height="42" alt="numpy logo"  />
-  <img width="12" /> </a>
   <a href="http://www.open-std.org/jtc1/sc22/wg14/" target="_blank" rel="noreferrer">
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-original.svg" height="42" alt="c logo"  />
   <img width="12" /> </a>
@@ -51,6 +48,15 @@
   <img width="12" /> </a>
   <a href="https://www.r-project.org/" target="_blank" rel="noreferrer">
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/r/r-original.svg" height="42" alt="r logo"  />
+  <img width="12" /> </a>
+  <a href="https://numpy.org/" target="_blank" rel="noreferrer">
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/numpy/numpy-original.svg" height="42" alt="numpy logo"  />
+  <img width="12" /> </a>
+ <a href="https://matplotlib.org/" target="_blank" rel="noreferrer">
+  <img src="https://matplotlib.org/_static/images/logo2.svg" height="42" alt="matplotlib logo" />
+  <img width="12" /> </a>
+ <a href="https://pandas.pydata.org/" target="_blank" rel="noreferrer">
+  <img src="https://pandas.pydata.org/static/img/pandas_white.svg" height="42" alt="pandas logo" />
   <img width="12" /> </a>
   <a href="https://www.kernel.org/" target="_blank" rel="noreferrer">
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg" height="42" alt="linux logo"  />
