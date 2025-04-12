@@ -12,10 +12,10 @@
 
 ###
 
-<h3 align="center">A Physics student who solve and visualize the problem with programming</h3>
+<h3 align="center">I'm a physics graduate with a passion for computational particle physics and solving programming challenges. I love merging scientific rigor with practical coding to build efficient and impactful solutions</h3>
 
-- 📌 **We're from Chennai, India**
-- 💬 Ask me about **Python, R, GNU Octave and C**
+- 📌 **Chennai, India**
+- 💬 Ask me about **Python, R, GNU Octave and C++**
 - 📫 How to reach me **comphysics@keemail.me**
 
 ###
