@@ -64,9 +64,6 @@
   <a href="https://www.spyder-ide.org/" target="_blank" rel="noreferrer">
   <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Spyder_logo.svg/1000px-Spyder_logo.svg.png" height="42" alt="spyder logo"  />
   <img width="12" /> </a>
-  <a href="https://www.android.com/intl/en_in/" target="_blank" rel="noreferrer">
-  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/android/android-plain-wordmark.svg" height="42" alt="android logo"  />
-  <img width="12" /> </a>
   <a href="https://www.arduino.cc/" target="_blank" rel="noreferrer">
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/arduino/arduino-original-wordmark.svg" height="42" alt="arduino logo"  />
   <img width="12" /> </a>
