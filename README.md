@@ -43,6 +43,12 @@
  <a href="https://matplotlib.org/" target="_blank" rel="noreferrer">
   <img src="https://matplotlib.org/_static/images/logo2.svg" height="42" alt="matplotlib logo" />
   <img width="12" /> </a>
+ <a href="https://www.scipy.org/" target="_blank" rel="noreferrer">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/2/22/Scipy.svg" height="42" alt="scipy logo" />
+  <img width="12" /> </a>
+ <a href="https://www.sympy.org/" target="_blank" rel="noreferrer">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/9/93/Sympy.svg" height="42" alt="sympy logo" />
+  <img width="12" /> </a>
  <a href="https://pandas.pydata.org/" target="_blank" rel="noreferrer">
   <img src="https://pandas.pydata.org/static/img/pandas_white.svg" height="42" alt="pandas logo" />
   <img width="12" /> </a>
