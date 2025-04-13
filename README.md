@@ -4,7 +4,7 @@
 
 ###
 
-<img align="right" height="150" src="https://en.wikipedia.org/wiki/Feynman_diagram#/media/File:Feynmann_Diagram_Gluon_Radiation.svg"  />
+<img align="right" height="150" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/Feynmann_Diagram_Gluon_Radiation.svg/1920px-Feynmann_Diagram_Gluon_Radiation.svg.png"  />
 
 ###
 
