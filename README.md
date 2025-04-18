@@ -16,7 +16,7 @@
 
 - 📌 **Chennai, India**
 - 💬 Ask me about **Python, R, GNU Octave C and C++**
-- 📫 How to reach me **comphysics@keemail.me**
+- 📫 Email me **comphysics@keemail.me**
 
 ###
 
