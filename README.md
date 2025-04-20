@@ -62,7 +62,7 @@
   <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Spyder_logo.svg/1000px-Spyder_logo.svg.png" height="42" alt="spyder logo"  />
   <img width="12" /> </a>
   <a href="https://www.codeblocks.org" target="_blank" rel="noreferrer">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Code::Blocks_logo.svg" height="42" alt="Code::Blocks IDE logo" />
+  <img src="https://codeblocks.org/wp-content/themes/codeblocks/images/cb-logo.png" height="42" alt="Code::Blocks IDE logo" />
   <img width="12" alt="" /> </a>
   <a href="https://www.arduino.cc/" target="_blank" rel="noreferrer">
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/arduino/arduino-original-wordmark.svg" height="42" alt="arduino logo"  />
