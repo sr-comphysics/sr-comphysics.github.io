@@ -75,7 +75,7 @@
 
 ###
 
-  This project is licensed under the MIT License. Please refer to the [LICENSE](https://github.com/Com-physics/LICENSE) file.
+  This project is licensed under the MIT License. Please refer to the [LICENSE](https://github.com/Com-physics/Com-physics/blob/main/LICENSE) file.
 
 ###
 
