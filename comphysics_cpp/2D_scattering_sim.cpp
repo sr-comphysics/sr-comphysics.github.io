@@ -1,4 +1,5 @@
-/* Title: 2D Scattering Simulation using Runge–Kutta Integration
+/* 
+ * Title: 2D Scattering Simulation using Runge–Kutta Integration
  * Description:
  *   This program simulates a two-dimensional scattering experiment.
  *   A projectile moving in the plane is subjected to forces
@@ -20,7 +21,6 @@
  *     - RKSTEP: Implements a complete RK4 time step.
  *     - RK: Integrates from initial time (Ti) to final time (Tf)
  *       with Nt steps, storing the integration history.
- *
  */
 
 #include <iostream>
