@@ -1,5 +1,5 @@
-/* Title: Root Finding via the Bisection Method
- *
+/* 
+ * Title: Root Finding via the Bisection Method
  * Description:
  * This program approximates a solution (i.e., a root) for a nonlinear equation of the
  * form f(x) = 0 using the bisection method. The function f(x) is defined as:
