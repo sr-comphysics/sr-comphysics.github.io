@@ -1,4 +1,5 @@
-/* Title: Two-Dimensional Spring-Mass System Simulation
+/* 
+ * Title: Two-Dimensional Spring-Mass System Simulation
  * Description:
  *   This program simulates a two-dimensional spring-mass system
  *   subject to gravity. The mass moves in the x1 (horizontal) and
@@ -22,8 +23,7 @@
  *
  * Compiler Notes:
  *   - Compile with any standard C++ compiler (g++, clang++, etc.) using C++11 standard or later.
- 
- *****************************************************/
+ */
 
 #include <iostream>   // For standard input/output operations (cout, endl)
 #include <fstream>    // For file stream operations (if needed in future expansions)
