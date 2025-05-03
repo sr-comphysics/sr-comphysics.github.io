@@ -4,39 +4,72 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Computational Physics Hub</title>
-  <!-- Include Open Sans from Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
-  <!-- Include Marked library for converting Markdown to HTML -->
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
   <style>
+    :root {
+      --primary-color: #111059;
+      --background-light: #f4f4f4;
+      --text-light: #fff;
+      --card-text: #ccc;
+      --shadow: rgba(0, 0, 0, 0.1);
+      --transition-speed: 0.3s;
+      /* Variables for the About section */
+      --about-gradient-start: #111059;
+      --about-gradient-end: #2c2c7a;
+      --about-text-color: #ffea00;
+      /* New variables for Card gradient and accent colors */
+      --card-gradient-start: #2a2a2a;
+      --card-gradient-end: #000;
+      --card-title-color: #9b59b6;
+      --card-link-color: #3498db;
+    }
+
+    /* Global styles */
+    {
+      box-sizing: border-box;
+    }
+
     body {
       font-family: 'Open Sans', sans-serif;
-      background-color: #007BFF;
+      background-color: var(--primary-color);
       margin: 0;
       padding: 0;
-      text-align: center;
-      color: #fff;
       line-height: 1.6;
+      color: var(--text-light);
     }
+
+    /* Header styling */
     header {
       background-color: rgba(0, 0, 0, 0.2);
-      padding: 30px 0;
+      padding: 30px 20px;
+      text-align: center;
       margin-bottom: 20px;
+      transition: background-color var(--transition-speed) ease-in-out;
     }
     header h1 {
       margin: 0;
       font-size: 2.8em;
+      font-weight: 600;
     }
     header p {
-      font-size: 1.2em;
       margin: 10px 0 0;
+      font-size: 1.2em;
     }
+
+    /* Main content styles */
     main {
-      padding: 50px 20px;
+      padding: 20px;
     }
+    main section {
+      margin-bottom: 40px;
+    }
+    /* General h2 styles reduced for a more subtle appearance */
     h2 {
-      margin-top: 40px;
-      font-size: 2em;
+      font-size: 1.6em;
+      margin: 30px 0 15px;
+      text-align: center;
+      color: var(--card-text);
     }
     p, li {
       font-size: 1.2em;
@@ -45,39 +78,101 @@
       text-align: left;
     }
     ul {
-      list-style: none;
       padding: 0;
+      list-style: none;
     }
-    ul li {
-      padding: 5px 0;
+    li {
+      margin: 5px 0;
     }
+
+    /* Link styling */
     a {
-      color: #ffea00;
+      color: var(--card-link-color);
       text-decoration: none;
+      transition: color var(--transition-speed) ease;
     }
     a:hover {
+      color: #2980b9;
       text-decoration: underline;
     }
-    footer {
-      background-color: rgba(0, 0, 0, 0.2);
-      padding: 20px 0;
-      position: fixed;
-      width: 100%;
-      bottom: 0;
-      font-size: 0.9em;
+
+    /* Card component styling */
+    .card {
+      background: linear-gradient(135deg, var(--card-gradient-start), var(--card-gradient-end));
+      padding: 20px;
+      margin: 20px auto;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px var(--shadow);
+      max-width: 900px;
+      transition: transform var(--transition-speed);
+      color: var(--text-light);
     }
-    section {
-      margin-bottom: 40px;
+    .card:hover {
+      transform: translateY(-5px);
     }
-    /* Custom styling for README content */
+    /* Card h2 uses new accent title color */
+    .card h2 {
+      color: var(--card-title-color);
+    }
+
+    /* README container styling */
     #readme {
-      background: #fff;
-      color: #000;
+      background: var(--background-light);
+      color: var(--card-text);
       padding: 20px;
       border-radius: 5px;
       max-width: 800px;
-      margin: 0 auto 40px;
+      margin: 20px auto 0;
       text-align: left;
+      overflow-wrap: break-word;
+    }
+
+    /* Footer styling */
+    footer {
+      background-color: rgba(0, 0, 0, 0.2);
+      padding: 20px;
+      text-align: center;
+      font-size: 0.9em;
+      margin-top: 40px;
+    }
+
+    /* Dark theme and gradient for About section */
+    #about {
+      background: linear-gradient(135deg, var(--about-gradient-start), var(--about-gradient-end));
+      padding: 20px;
+      border-radius: 8px;
+      margin: 20px auto;
+      max-width: 900px;
+    }
+    #about h2 {
+      color: var(--about-text-color);
+      /* Further reduce font size for the About heading if needed */
+      font-size: 1.6em;
+    }
+    #about p, #about li {
+      color: var(--text-light);
+    }
+    #about ul {
+      padding-left: 50px;
+    }
+
+    #about ul li::before {
+      content: "• ";
+      color: var(--text-light);
+      margin-right: 8px;
+    }
+
+    /* Responsive design adjustments */
+    @media (min-width: 768px) {
+      header h1 {
+        font-size: 2.8em;
+      }
+      header p, p, li {
+        font-size: 1.3em;
+      }
+      main {
+        padding: 40px 20px;
+      }
     }
   </style>
 </head>
@@ -87,13 +182,19 @@
     <h1>Welcome to the Computational Physics Hub</h1>
     <p>Exploring Problem Solving and Data Analysis with Python, C, and C++</p>
   </header>
-  <main>
-    <section id="about">
+  <section id="about">
       <h2>About This Site</h2>
       <p>This site is dedicated to enthusiasts and professionals interested in computational physics, advanced problem solving, and data analysis.</p>
+      <p>Here you will find tutorials and code samples:</p>
+      <ul>
+        <li> Numerical simulations and modeling in physics</li>
+        <li> Algorithm development in C and C++</li>
+        <li> Data analysis and visualization using Python</li>
+        <li> Bridging theory with computational methods</li>
+      </ul>
     </section>
 
-    <section id="programs">
+    <section id="programs" class="card">
       <h2>Programs</h2>
       <p>Explore our dedicated folders for problem solving in physics:</p>
       <ul>
@@ -104,15 +205,14 @@
       <p>View the entire repository <a href="https://github.com/Com-physics/Com-physics.github.io" target="_blank">here</a>.</p>
     </section>
 
-    <!-- Section to Display README.md Content -->
-    <section id="repo-readme">
+    <section id="repo-readme" class="card">
       <h2>Repository Overview</h2>
       <div id="readme">
         Loading repository information...
       </div>
     </section>
 
-    <section id="contact">
+    <section id="contact" class="card">
       <h2>Contact Us</h2>
       <p>If you have questions or would like to collaborate, please reach out via email:</p>
       <ul>
@@ -126,8 +226,7 @@
   </footer>
 
   <script>
-    https://github.com/Com-physics/Com-physics.github.io/main/README.md"
-    const readmeUrl = "https://github.com/Com-physics/Com-physics.github.io/blob/main/README.md";
+    const readmeUrl = "https://raw.githubusercontent.com/Com-physics/Com-physics.github.io/main/README.md";
 
     fetch(readmeUrl)
       .then(response => {
