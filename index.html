@@ -5,56 +5,167 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Computational Physics Hub</title>
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <!-- Include Marked library for converting Markdown to HTML -->
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
   <style>
+    /* CSS Variables for easy theming */
     :root {
-      --primary-color: #111059;
-      --background-light: #f4f4f4;
+      --primary-color: #1d0f3c;
+      --background-light: #0a1028;
       --text-light: #fff;
       --card-text: #ccc;
-      --shadow: rgba(0, 0, 0, 0.1);
+      --shadow: rgba(0, 0, 0, 0.90);
       --transition-speed: 0.3s;
       /* Variables for the About section */
-      --about-gradient-start: #111059;
-      --about-gradient-end: #2c2c7a;
+      --about-gradient-start: #294172;
+      --about-gradient-end: #130a28;
       --about-text-color: #ffea00;
       /* New variables for Card gradient and accent colors */
-      --card-gradient-start: #2a2a2a;
+      --card-gradient-start: #130a28;
       --card-gradient-end: #000;
       --card-title-color: #9b59b6;
       --card-link-color: #3498db;
+      /* Accent color for buttons and hover states */
+      --accent-color: #3498db;
     }
 
     /* Global styles */
-    {
+    * {
       box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
 
     body {
       font-family: 'Open Sans', sans-serif;
       background-color: var(--primary-color);
-      margin: 0;
-      padding: 0;
-      line-height: 1.6;
+      line-height: 2.0;
       color: var(--text-light);
+      transition: background-color var(--transition-speed), color var(--transition-speed);
+    }
+
+    /* High Contrast Mode */
+    body.high-contrast {
+      background-color: #000;
+      color: #ffd800;
+    }
+
+    body.high-contrast header,
+    body.high-contrast nav,
+    body.high-contrast footer {
+      background-color: #222;
     }
 
     /* Header styling */
     header {
       background-color: rgba(0, 0, 0, 0.2);
-      padding: 30px 20px;
-      text-align: center;
-      margin-bottom: 20px;
-      transition: background-color var(--transition-speed) ease-in-out;
+      padding: 20px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* Flex container for header options */
+    .header-top {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    /* Accessibility options on the left */
+    .accessibility-options {
+      margin-left: 20px;
+    }
+
+    /* Language selection on the right */
+    .language-switch {
+      margin-right: 20px;
+      display: flex;
+      gap: 10px;
     }
     header h1 {
-      margin: 0;
-      font-size: 2.8em;
+      margin: 1px 0;
+      font-size: 2.4em;
       font-weight: 600;
+      text-align: center;
     }
     header p {
-      margin: 10px 0 0;
-      font-size: 1.2em;
+      margin: 5px 0 0;
+      font-size: 1.0em;
+      text-align: center;
+    }
+
+    /* Navigation bar styling */
+    nav {
+      width: 100%;
+      background: var(--primary-color);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 10px 20px;
+    }
+    .nav-links {
+      list-style: none;
+      display: flex;
+    }
+    .nav-links li {
+      margin: 0 20px;
+    }
+    .nav-links a {
+      color: var(--accent-color);
+      text-decoration: none;
+      font-weight: 600;
+      transition: color var(--transition-speed);
+    }
+    .nav-links a:hover {
+      color: #ffd800;
+    }
+
+    /* Hamburger menu styling (now below the header) */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      margin: 10px auto;
+    }
+    .hamburger span {
+      height: 3px;
+      width: 25px;
+      background: var(--accent-color);
+      margin: 4px 0;
+      transition: all var(--transition-speed);
+    }
+
+    /* Language selection buttons styling */
+    .language-switch button {
+      background: var(--accent-color);
+      color: var(--primary-color);
+      border: none;
+      padding: 8px 12px;
+      cursor: pointer;
+      border-radius: 4px;
+      transition: background var(--transition-speed);
+    }
+    .language-switch button:hover {
+      background: #ffd800;
+    }
+
+    /* Accessibility buttons styling */
+    .accessibility-options button {
+      background: var(--accent-color);
+      color: var(--primary-color);
+      border: none;
+      padding: 8px 12px;
+      cursor: pointer;
+      border-radius: 4px;
+      margin-right: 5px;
+      transition: background var(--transition-speed);
+    }
+    .accessibility-options button:hover {
+      background: #ffd800;
     }
 
     /* Main content styles */
@@ -64,10 +175,9 @@
     main section {
       margin-bottom: 40px;
     }
-    /* General h2 styles reduced for a more subtle appearance */
     h2 {
-      font-size: 1.6em;
-      margin: 30px 0 15px;
+      font-size: 2em;
+      margin: 40px 0 20px;
       text-align: center;
       color: var(--card-text);
     }
@@ -87,19 +197,19 @@
 
     /* Link styling */
     a {
-      color: var(--card-link-color);
+      color: var(--accent-color);
       text-decoration: none;
-      transition: color var(--transition-speed) ease;
+      transition: color var(--transition-speed);
     }
     a:hover {
-      color: #2980b9;
+      color: #ffd800;
       text-decoration: underline;
     }
 
     /* Card component styling */
     .card {
       background: linear-gradient(135deg, var(--card-gradient-start), var(--card-gradient-end));
-      padding: 20px;
+      padding: 50px;
       margin: 20px auto;
       border-radius: 8px;
       box-shadow: 0 2px 8px var(--shadow);
@@ -110,7 +220,6 @@
     .card:hover {
       transform: translateY(-5px);
     }
-    /* Card h2 uses new accent title color */
     .card h2 {
       color: var(--card-title-color);
     }
@@ -141,13 +250,12 @@
       background: linear-gradient(135deg, var(--about-gradient-start), var(--about-gradient-end));
       padding: 20px;
       border-radius: 8px;
+      box-shadow: 0 2px 8px var(--shadow);
       margin: 20px auto;
       max-width: 900px;
     }
     #about h2 {
       color: var(--about-text-color);
-      /* Further reduce font size for the About heading if needed */
-      font-size: 1.6em;
     }
     #about p, #about li {
       color: var(--text-light);
@@ -162,10 +270,38 @@
       margin-right: 8px;
     }
 
-    /* Responsive design adjustments */
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .nav-links {
+        flex-direction: column;
+        width: 100%;
+        display: none;
+      }
+      .nav-links.active {
+        display: flex;
+        background-color: var(--primary-color);
+      }
+      .nav-links li {
+        text-align: center;
+        padding: 10px 0;
+        margin: 0;
+        border-top: 1px solid #333;
+      }
+      .hamburger {
+        display: flex;
+      }
+      .header-top {
+        flex-direction: column;
+        align-items: center;
+      }
+      .accessibility-options, .language-switch {
+        margin: 5px 0;
+      }
+    }
+
     @media (min-width: 768px) {
       header h1 {
-        font-size: 2.8em;
+        font-size: 2.4em;
       }
       header p, p, li {
         font-size: 1.3em;
@@ -176,58 +312,114 @@
     }
   </style>
 </head>
+
 <body>
+  <!-- Header Section with Accessibility and Language Options -->
   <header>
-    <h1>Hello, I'm Sunil Raj Subbarayan</h1>
-    <h1>Welcome to the Computational Physics Hub</h1>
-    <p>Exploring Problem Solving and Data Analysis with Python, C, and C++</p>
+    <div class="header-top">
+      <!-- Accessibility Options on the Left -->
+      <div class="accessibility-options">
+        <!-- The Screen Reader button here just shows an alert as an example -->
+        <button onclick="activateScreenReader()">Screen Reader</button>
+        <button id="contrastButton" onclick="toggleHighContrast()">High Contrast</button>
+      </div>
+
+      <!-- Language Switch on the Right (single toggle button) -->
+      <div class="language-switch">
+        <button id="languageButton" onclick="toggleLanguage()">தமிழ்</button>
+      </div>
+    </div>
+
+    <!-- Header Section -->
+    <h1 id="nameHeading">Hi, I am Sunil Raj Subbarayan</h1>
+    <h1 id="mainHeading">Welcome to the Computational Physics Hub</h1>
+    <p id="subHeading">Exploring Problem Solving and Data Analysis with Python, C, and C++</p>
   </header>
-  <section id="about">
-      <h2>About This Site</h2>
-      <p>This site is dedicated to enthusiasts and professionals interested in computational physics, advanced problem solving, and data analysis.</p>
-      <p>Here you will find tutorials and code samples:</p>
-      <ul>
-        <li> Numerical simulations and modeling in physics</li>
-        <li> Algorithm development in C and C++</li>
-        <li> Data analysis and visualization using Python</li>
-        <li> Bridging theory with computational methods</li>
-      </ul>
-    </section>
 
+  <!-- Hamburger Menu -->
+  <div class="hamburger" id="hamburger">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+
+  <!-- Navigation Bar -->
+  <nav>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="#">Home</a></li>
+      <li><a href="#programs">Programs</a></li>
+      <li><a href="#repo-readme">Repository</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <main>
+
+    <!-- Programs Section -->
     <section id="programs" class="card">
-      <h2>Programs</h2>
-      <p>Explore our dedicated folders for problem solving in physics:</p>
-      <ul>
-        <li><a href="https://github.com/Com-physics/Com-physics.github.io/tree/main/comphysics_python" target="_blank">Python Programs</a></li>
-        <li><a href="https://github.com/Com-physics/Com-physics.github.io/tree/main/comphysics_c" target="_blank">C Programs</a></li>
-        <li><a href="https://github.com/Com-physics/Com-physics.github.io/tree/main/comphysics_cpp" target="_blank">C++ Programs</a></li>
+      <h2 id="program-title">Programs</h2>
+      <p id="programs-text">Explore our dedicated folders for problem solving in physics:</p>
+      <ul id="programs-list">
+        <li><a href="https://github.com/sr-comphysics/sr-comphysics.github.io/tree/main/comphysics_python" target="_blank">Python Programs</a></li>
+        <li><a href="https://github.com/sr-comphysics/sr-comphysics.github.io/tree/main/comphysics_c" target="_blank">C Programs</a></li>
+        <li><a href="https://github.com/sr-comphysics/sr-comphysics.github.io/tree/main/comphysics_cpp" target="_blank">C++ Programs</a></li>
       </ul>
-      <p>View the entire repository <a href="https://github.com/Com-physics/Com-physics.github.io" target="_blank">here</a>.</p>
+      <p id="repo-link">View the entire repository <a href="https://github.com/sr-comphysics/sr-comphysics.github.io" target="_blank">here</a>.</p>
     </section>
 
+    <!-- Repository Overview Section -->
     <section id="repo-readme" class="card">
-      <h2>Repository Overview</h2>
+      <h2 id="repo-title">Repository Overview</h2>
       <div id="readme">
         Loading repository information...
       </div>
     </section>
 
+    <!-- About Section -->
+    <section id="about">
+      <h2 id="about-title">About This Site</h2>
+      <p id="about-text">
+        This site is dedicated to enthusiasts and professionals interested in computational physics, advanced problem solving, and data analysis.
+      </p>
+      <p id="tutorial-text">
+        Here you will find tutorials and code samples:
+      </p>
+      <ul id="tutorial-list">
+        <li>  Numerical simulations and modeling in physics</li>
+        <li>  Algorithm development in C and C++</li>
+        <li>  Data analysis and visualization using Python</li>
+        <li>  Bridging theory with computational methods</li>
+      </ul>
+    </section>
+
+    <!-- Contact Section -->
     <section id="contact" class="card">
-      <h2>Contact Us</h2>
-      <p>If you have questions or would like to collaborate, please reach out via email:</p>
-      <ul>
-        <li>Personal: <a href="mailto:sunilsubbarayan@gmail.com">sunilsubbarayan@gmail.com</a></li>
+      <h2 id="contact-title">Contact Us</h2>
+      <p id="contact-text">If you have questions or want to collaborate, get in touch:</p>
+      <ul id="contact-list">
+        <li>Personal: <a href="mailto:sunilsubbarayan10@gmail.com">sunilsubbarayan10@gmail.com</a></li>
         <li>GitHub Hub: <a href="mailto:comphysics@keemail.me">comphysics@keemail.me</a></li>
       </ul>
     </section>
   </main>
+
   <footer>
     <p>&copy; 2023 Sunil Raj S. All rights reserved.</p>
   </footer>
 
   <script>
-    const readmeUrl = "https://raw.githubusercontent.com/Com-physics/Com-physics.github.io/main/README.md";
 
+    // Hamburger Menu Toggle
+    const hamburger = document.getElementById("hamburger");
+    const navLinks = document.getElementById("nav-links");
+
+    hamburger.addEventListener("click", () => {
+      navLinks.classList.toggle("active");
+    });
+
+    // Fetch and render README markdown
+    const readmeUrl = "https://raw.githubusercontent.com/sr-comphysics/sr-comphysics.github.io/main/README.md";
     fetch(readmeUrl)
       .then(response => {
         if (!response.ok) {
@@ -241,6 +433,144 @@
       .catch(error => {
         document.getElementById("readme").innerHTML = "Failed to load README content: " + error.message;
       });
+
+    // Global variable to track current language. "en" is the default.
+    let currentLanguage = "en";
+
+    // Toggle language function
+    function toggleLanguage() {
+      if (currentLanguage === "en") {
+        //  Tamil Translations
+        // Header Section
+        document.getElementById("nameHeading").innerText = "வணக்கம், நான் சுனில் ராஜ் சுப்பராயன்!";
+        document.getElementById("mainHeading").innerText = "கணக்கீட்டு இயற்பியல் மையத்திற்கு உங்களை வரவேற்கிறோம்";
+        document.getElementById("subHeading").innerText = "Python, C மற்றும் C++ உடன் இயற்பியல் சிக்கல்களுக்கு தீர்வு காணுதல் மற்றும் தரவு பகுப்பாய்வுகள் குறித்து நாடலாம்.";
+
+        // About Section
+        document.getElementById("about-title").innerText = "இந்த தளம் பற்றி";
+        document.getElementById("about-text").innerText =
+          "இந்த பக்கம், கணக்கீட்டு இயற்பியல், மேம்பட்ட சிக்கல்களுகான தீர்வு காண்பது மற்றும் தரவு பகுப்பாய்வு ஆர்வலர்கள் மற்றும் வல்லுனர்களுக்காக அர்ப்பணிக்கப்பட்டது.";
+
+        // Tutorials Section
+        document.getElementById("tutorial-text").innerText =
+          "இங்கே நீங்கள் பயிற்சிகள் மற்றும் குறியீட்டு மாதிரிகளை காண்பீர்கள்:";
+        document.getElementById("tutorial-list").innerHTML = `
+          <li>  எண்ணியல் சார்ந்த பாவிப்புகள் மற்றும் இயற்பியல் மாதிரிகள்.</li>
+          <li>  C மற்றும் C++ நிரல்களின் நெறிமுறைகள் உருவாக்கம்</li>
+          <li>  Python பயன்படுத்தி தரவு பகுப்பாய்வு மற்றும் உருவகப்படுத்தல்</li>
+          <li>  கோட்பாட்டை கணினி முறைமைகளுடன் இணைத்தல்</li>
+        `;
+
+        // Programs Section
+        document.getElementById("program-title").innerText = "நிரல்கள்";
+        document.getElementById("programs-text").innerText =
+          "இயற்பியல் சிக்கல்களை கணினி நிரல்கள் மூலம் தீர்வு காண ஒடுக்கப்பட்ட மூலவரைவின் கோபுறைகளை கீழே காணலாம்:";
+        document.getElementById("programs-list").innerHTML = `
+          <li><a href="https://github.com/sr-comphysics/sr-comphysics.github.io/tree/main/comphysics_python" target="_blank">Python நிரல்கள்</a></li>
+          <li><a href="https://github.com/sr-comphysics/sr-comphysics.github.io/tree/main/comphysics_c" target="_blank">C நிரல்கள்</a></li>
+          <li><a href="https://github.com/sr-comphysics/sr-comphysics.github.io/tree/main/comphysics_cpp" target="_blank">C++ நிரல்கள்</a></li>
+        `;
+        document.getElementById("repo-link").innerHTML =
+          'நிரல்களின் ஒருங்கிணைந்த வைப்பிடத்தை <a href="https://github.com/sr-comphysics/sr-comphysics.github.io" target="_blank">இங்கே காணலாம்.</a>';
+
+        // Repository Overview Section
+        document.getElementById("repo-title").innerText = "வைப்பிட மேற்பார்வை";
+
+        // Contact Section
+        document.getElementById("contact-title").innerText = "தொடர்புகொள்ள";
+        document.getElementById("contact-text").innerText =
+          "உங்களுக்கு எதேனும் கேள்விகள், சந்தேகங்கள் எழும்பினாலோ அல்லது எங்களுடன் இணைந்து செயல்பட எழும்பினாலோ, கீழ்காணும் மின்னஞ்சல்கள் மூலம் எங்களை அணுகலாம்.";
+        document.getElementById("contact-list").innerHTML = `
+          <li>தனிப்பட்ட முகவரி: <a href="mailto:sunilsubbarayan10@gmail.com">sunilsubbarayan10@gmail.com</a></li>
+          <li>பொது முகவரி: <a href="mailto:comphysics@keemail.me">comphysics@keemail.me</a></li>
+        `;
+        document.getElementById("nav-links").innerHTML = `
+          <li><a href="#">முகப்பு</a></li>
+          <li><a href="#programs">நிரல்கள்</a></li>
+          <li><a href="#repo-readme">வைப்பிடம்</a></li>
+          <li><a href="#about">தளம் பற்றி</a></li>
+          <li><a href="#contact">தொடர்பு கொள்ள</a></li>
+        `;
+
+        // Update language button to allow switching back to English
+        document.getElementById("languageButton").innerText = "English";
+        currentLanguage = "ta";
+      } else {
+        // English Translations
+        // Header Section
+        document.getElementById("nameHeading").innerText = "Hi, I am Sunil Raj Subbarayan!";
+        document.getElementById("mainHeading").innerText = "Welcome to the Computational Physics Hub";
+        document.getElementById("subHeading").innerText = "Exploring Problem Solving and Data Analysis with Python, C, and C++";
+
+        // About Section
+        document.getElementById("about-title").innerText = "About This Site";
+        document.getElementById("about-text").innerText =
+          "This site is dedicated to enthusiasts and professionals interested in computational physics, advanced problem solving, and data analysis.";
+
+        // Tutorials Section
+        document.getElementById("tutorial-text").innerText =
+          "Here you will find tutorials and code samples:";
+        document.getElementById("tutorial-list").innerHTML = `
+          <li>  Numerical simulations and modeling in physics</li>
+          <li>  Algorithm development in C and C++</li>
+          <li>  Data analysis and visualization using Python</li>
+          <li>  Bridging theory with computational methods</li>
+        `;
+
+        // Programs Section
+        document.getElementById("program-title").innerText = "Programs";
+        document.getElementById("programs-text").innerText =
+          "Explore our dedicated folders for problem solving in physics:";
+          document.getElementById("programs-list").innerHTML = `
+          <li><a href="https://github.com/sr-comphysics/sr-comphysics.github.io/tree/main/comphysics_python" target="_blank">Python Programs</a></li>
+          <li><a href="https://github.com/sr-comphysics/sr-comphysics.github.io/tree/main/comphysics_c" target="_blank">C Programs</a></li>
+          <li><a href="https://github.com/sr-comphysics/sr-comphysics.github.io/tree/main/comphysics_cpp" target="_blank">C++ Programs</a></li>
+        `;
+        document.getElementById("repo-link").innerHTML =
+          'View the entire repository <a href="https://github.com/sr-comphysics/sr-comphysics.github.io" target="_blank">here</a>.';
+
+        // Repository Overview Section
+        document.getElementById("repo-title").innerText = "Repository Overview";
+
+        // Contact Section
+        document.getElementById("contact-title").innerText = "Contact Us";
+        document.getElementById("contact-text").innerText =
+          "If you have questions or want to collaborate, get in touch:";
+        document.getElementById("contact-list").innerHTML = `
+          <li>Personal: <a href="mailto:sunilsubbarayan10@gmail.com">sunilsubbarayan10@gmail.com</a></li>
+          <li>GitHub Hub: <a href="mailto:comphysics@keemail.me">comphysics@keemail.me</a></li>
+        `;
+        document.getElementById("nav-links").innerHTML = `
+          <li><a href="#">Home</a></li>
+          <li><a href="#programs">Programs</a></li>
+          <li><a href="#repo-readme">Repository</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#contact">Contact</a></li>
+        `;
+
+        // Update language button to allow switching to Tamil.
+        document.getElementById("languageButton").innerText = "தமிழ்";
+        currentLanguage = "en";
+      }
+      console.log("Current Language: " + currentLanguage);
+    }
+
+    // Accessibility Functions
+    function activateScreenReader() {
+      alert("Screen reader functionality is handled by your device/browser. Please ensure your assistive technology is enabled.");
+      console.log("Screen reader activated (placeholder)");
+    }
+
+    function toggleHighContrast() {
+      document.body.classList.toggle("high-contrast");
+      const contrastButton = document.getElementById("contrastButton");
+      if (document.body.classList.contains("high-contrast")) {
+        contrastButton.innerText = "Normal Mode";
+      } else {
+        contrastButton.innerText = "High Contrast";
+      }
+      console.log("High contrast mode toggled.");
+    }
   </script>
 </body>
 </html>
