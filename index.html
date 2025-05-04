@@ -320,7 +320,7 @@
       <!-- Accessibility Options on the Left -->
       <div class="accessibility-options">
         <!-- The Screen Reader button here just shows an alert as an example -->
-        <button onclick="activateScreenReader()">Screen Reader</button>
+        <button id="screenReader" onclick="activateScreenReader()">Screen Reader</button>
         <button id="contrastButton" onclick="toggleHighContrast()">High Contrast</button>
       </div>
 
@@ -405,7 +405,7 @@
   </main>
 
   <footer>
-    <p>&copy; 2023 Sunil Raj S. All rights reserved.</p>
+    <p id="footer-text">&copy; 2023 Sunil Raj S. All rights reserved.</p>
   </footer>
 
   <script>
@@ -441,15 +441,19 @@
     function toggleLanguage() {
       if (currentLanguage === "en") {
         //  Tamil Translations
+        //  Accessibility Section
+        document.getElementById("screenReader").innerHTML = '<button onclick="activateScreenReader()">திரை வாசகர்</button>';
+        document.getElementById("contrastButton").innerHTML = '<button onclick="toggleHighContrast()">உயர் மாறுபாடு</button>';
+
         // Header Section
         document.getElementById("nameHeading").innerText = "வணக்கம், நான் சுனில் ராஜ் சுப்பராயன்!";
         document.getElementById("mainHeading").innerText = "கணக்கீட்டு இயற்பியல் மையத்திற்கு உங்களை வரவேற்கிறோம்";
-        document.getElementById("subHeading").innerText = "Python, C மற்றும் C++ உடன் இயற்பியல் சிக்கல்களுக்கு தீர்வு காணுதல் மற்றும் தரவு பகுப்பாய்வுகள் குறித்து நாடலாம்.";
+        document.getElementById("subHeading").innerText = "Python, C மற்றும் C++ உடன் இயற்பியல் சிக்கல்களுக்கு தீர்வு காணுதல் மற்றும் தரவு பகுப்பாய்வுகள் குறித்து ஆராய்தல்.";
 
         // About Section
         document.getElementById("about-title").innerText = "இந்த தளம் பற்றி";
         document.getElementById("about-text").innerText =
-          "இந்த பக்கம், கணக்கீட்டு இயற்பியல், மேம்பட்ட சிக்கல்களுகான தீர்வு காண்பது மற்றும் தரவு பகுப்பாய்வு ஆர்வலர்கள் மற்றும் வல்லுனர்களுக்காக அர்ப்பணிக்கப்பட்டது.";
+          "இந்த பக்கம், கணக்கீட்டு இயற்பியல், மேம்பட்ட சிக்கல் தீர்க்கும் திறன் மற்றும் தரவு பகுப்பாய்வு ஆகியவற்றில் ஆர்வமுள்ள ஆர்வலர்கள் மற்றும் வல்லுனர்களுக்காக அர்ப்பணிக்கப்பட்டது.";
 
         // Tutorials Section
         document.getElementById("tutorial-text").innerText =
@@ -464,22 +468,22 @@
         // Programs Section
         document.getElementById("program-title").innerText = "நிரல்கள்";
         document.getElementById("programs-text").innerText =
-          "இயற்பியல் சிக்கல்களை கணினி நிரல்கள் மூலம் தீர்வு காண ஒடுக்கப்பட்ட மூலவரைவின் கோபுறைகளை கீழே காணலாம்:";
+          "இயற்பியல் சிக்கல்களை கணினி நிரல்கள் மூலம் தீர்வு காண எங்கள் பிரத்யேக மூலவரைவின் கோபுறைகளை கீழே காணலாம்:";
         document.getElementById("programs-list").innerHTML = `
           <li><a href="https://github.com/sr-comphysics/sr-comphysics.github.io/tree/main/comphysics_python" target="_blank">Python நிரல்கள்</a></li>
           <li><a href="https://github.com/sr-comphysics/sr-comphysics.github.io/tree/main/comphysics_c" target="_blank">C நிரல்கள்</a></li>
           <li><a href="https://github.com/sr-comphysics/sr-comphysics.github.io/tree/main/comphysics_cpp" target="_blank">C++ நிரல்கள்</a></li>
         `;
         document.getElementById("repo-link").innerHTML =
-          'நிரல்களின் ஒருங்கிணைந்த வைப்பிடத்தை <a href="https://github.com/sr-comphysics/sr-comphysics.github.io" target="_blank">இங்கே காணலாம்.</a>';
+          'நிரல்களின் ஒருங்கிணைந்த களஞ்சியத்தை <a href="https://github.com/sr-comphysics/sr-comphysics.github.io" target="_blank">இங்கே காண்க.</a>';
 
         // Repository Overview Section
-        document.getElementById("repo-title").innerText = "வைப்பிட மேற்பார்வை";
+        document.getElementById("repo-title").innerText = "களஞ்சியம் பற்றிய சிறு விளக்கம்";
 
         // Contact Section
         document.getElementById("contact-title").innerText = "தொடர்புகொள்ள";
         document.getElementById("contact-text").innerText =
-          "உங்களுக்கு எதேனும் கேள்விகள், சந்தேகங்கள் எழும்பினாலோ அல்லது எங்களுடன் இணைந்து செயல்பட எழும்பினாலோ, கீழ்காணும் மின்னஞ்சல்கள் மூலம் எங்களை அணுகலாம்.";
+          "உங்களுக்கு எதேனும் கேள்விகள், சந்தேகங்கள் இருந்தாலோ அல்லது எங்களுடன் இணைந்து செயல்பட விரும்பினாலோ, கீழ்காணும் மின்னஞ்சல்கள் மூலம் எங்களை அணுகலாம்.";
         document.getElementById("contact-list").innerHTML = `
           <li>தனிப்பட்ட முகவரி: <a href="mailto:sunilsubbarayan10@gmail.com">sunilsubbarayan10@gmail.com</a></li>
           <li>பொது முகவரி: <a href="mailto:comphysics@keemail.me">comphysics@keemail.me</a></li>
@@ -487,16 +491,23 @@
         document.getElementById("nav-links").innerHTML = `
           <li><a href="#">முகப்பு</a></li>
           <li><a href="#programs">நிரல்கள்</a></li>
-          <li><a href="#repo-readme">வைப்பிடம்</a></li>
+          <li><a href="#repo-readme">களஞ்சியம்</a></li>
           <li><a href="#about">தளம் பற்றி</a></li>
           <li><a href="#contact">தொடர்பு கொள்ள</a></li>
         `;
+
+        // Footer Section
+        document.getElementById("footer-text").innerHTML = '&copy; 2023 சுனில் ராஜ் சு. அனைத்து உரிமைகளும் பாதுகாக்கப்பட்டவை.';
 
         // Update language button to allow switching back to English
         document.getElementById("languageButton").innerText = "English";
         currentLanguage = "ta";
       } else {
         // English Translations
+        //  Accessibility Section
+        document.getElementById("screenReader").innerHTML = '<button onclick="activateScreenReader()">Screen Reader</button>';
+        document.getElementById("contrastButton").innerHTML = '<button onclick="toggleHighContrast()">High Contrast</button>';
+
         // Header Section
         document.getElementById("nameHeading").innerText = "Hi, I am Sunil Raj Subbarayan!";
         document.getElementById("mainHeading").innerText = "Welcome to the Computational Physics Hub";
@@ -547,6 +558,9 @@
           <li><a href="#about">About</a></li>
           <li><a href="#contact">Contact</a></li>
         `;
+
+        // Footer Section
+        document.getElementById("footer-text").innerHTML = '&copy; 2023 Sunil Raj S. All rights reserved.';
 
         // Update language button to allow switching to Tamil.
         document.getElementById("languageButton").innerText = "தமிழ்";
