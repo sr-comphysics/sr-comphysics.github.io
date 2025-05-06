@@ -75,12 +75,12 @@
 
 ###
 
-  This project is licensed under the MIT License. Please refer to the [LICENSE](https://github.com/Com-physics/Com-physics/blob/main/LICENSE) file.
+  This project is licensed under the MIT License. Please refer to the [LICENSE](https://github.com/sr-comphysics/sr-comphysics/blob/main/LICENSE) file.
 
 ###
 
 <div align="center">
-  <img src="https://github-readme-stats.vercel.app/api/top-langs?username=Com-physics&locale=en&hide_title=false&layout=compact&card_width=320&langs_count=5&theme=blue-green&hide_border=true&order=2" height="138" alt="languages graph"  />
+  <img src="https://github-readme-stats.vercel.app/api/top-langs?username=sr-comphysics&locale=en&hide_title=false&layout=compact&card_width=320&langs_count=5&theme=blue-green&hide_border=true&order=2" height="138" alt="languages graph"  />
 </div>
 
 ###
