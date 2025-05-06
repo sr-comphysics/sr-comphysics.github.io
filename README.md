@@ -4,7 +4,7 @@
 
 ###
 
-<img align="right" height="150" src="page_structure/Higgs_Decay.png"  />
+<img align="right" height="100" src="page_structure/Higgs_Decay.png"  />
 
 ###
 
