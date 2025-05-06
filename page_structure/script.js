@@ -34,7 +34,6 @@ function toggleLanguage() {
         document.getElementById("contrastButton").innerHTML = "உயர் மாறுபாடு";
 
         // Header Section
-        document.getElementById("nameHeading").innerText = "வணக்கம், நான் சுனில் ராஜ் சுப்பராயன்!";
         document.getElementById("mainHeading").innerText = "கணக்கீட்டு இயற்பியல் மையத்திற்கு உங்களை வரவேற்கிறோம்";
         document.getElementById("subHeading").innerText ="Python, C மற்றும் C++ உடன் இயற்பியல் சிக்கல்களுக்கு தீர்வு காணுதல் மற்றும் தரவு பகுப்பாய்வுகள் குறித்து ஆராய்வோம்.";
 
@@ -90,7 +89,6 @@ function toggleLanguage() {
         document.getElementById("contrastButton").innerHTML = "High Contrast";
 
         // Header Section
-        document.getElementById("nameHeading").innerText = "Hi, I am Sunil Raj Subbarayan";
         document.getElementById("mainHeading").innerText = "Welcome to the Computational Physics Hub";
         document.getElementById("subHeading").innerText = "Exploring Problem Solving and Data Analysis with Python, C, and C++";
 
