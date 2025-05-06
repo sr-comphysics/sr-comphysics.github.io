@@ -4,7 +4,7 @@
 
 ###
 
-<img align="right" height="150" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/Feynmann_Diagram_Gluon_Radiation.svg/1920px-Feynmann_Diagram_Gluon_Radiation.svg.png"  />
+<img align="right" height="150" src="page_structure/Higgs_Decay.png"  />
 
 ###
 
