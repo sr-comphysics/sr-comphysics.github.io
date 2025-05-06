@@ -1,0 +1,372 @@
+/* CSS Variables for easy theming */
+:root {
+    --primary-color: #1d0f3c;
+    --background-light: #0a1028;
+    --text-light: #fff;
+    --card-text: #ccc;
+    --shadow: rgba(0, 0, 0, 0.90);
+    --transition-speed: 0.3s;
+    --about-gradient-start: #294172;
+    --about-gradient-end: #130a28;
+    --about-text-color: #ffea00;
+    --card-gradient-start: #130a28;
+    --card-gradient-end: #000;
+    --card-title-color: #9b59b6;
+    --card-link-color: #3498db;
+    --accent-color: #3498db;
+    /* Height of the top bar */
+    --top-bar-height: 50px;
+    /* Height of the nav in desktop mode */
+    --nav-height: 50px;
+    --hamburger-space: 50px;
+}
+
+/* Global styles */
+* {
+    list-style: none;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+/* Body styling */
+body {
+    font-family: 'Open Sans', sans-serif;
+    background-color: var(--primary-color);
+    line-height: 2.0;
+    scroll-behavior: smooth;
+    color: var(--text-light);
+    transition: background-color var(--transition-speed),
+    color var(--transition-speed);
+
+    /* For mobile, add padding-top for top-bar and hamburger area */
+    padding-top: calc(var(--top-bar-height) + var(--hamburger-space));
+}
+
+body.high-contrast {
+    background-color: #000;
+    color: #ffd800;
+}
+
+/* High Contrast Mode */
+body.high-contrast header,
+body.high-contrast nav,
+body.high-contrast footer {
+    background-color: #222;
+}
+
+/* Top bar now holds accessibility options and on desktop the nav links too */
+.top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: var(--top-bar-height);
+    background-color: var(--primary-color);
+    border-bottom: 1px solid #333;
+    z-index: 1000;
+}
+
+.top-bar > .hamburger,
+.top-bar > .accessibility-options {
+    display: flex;
+    align-items: center;
+}
+
+/* Hamburger Icon */
+.hamburger {
+    font-size: 2rem;
+    cursor: pointer;
+    display: none; /* Hidden by default (desktop) */
+}
+
+/* Show only on small screens */
+@media (max-width: 768px) {
+    .hamburger {
+        display: block;
+    }
+}
+
+/* Mobile Menu Overlay */
+.mobile-overlay {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.95);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+    transform: translateY(-100%);
+    transition: transform 0.3s ease-in-out;
+}
+
+.mobile-overlay.show {
+    transform: translateY(0);
+}
+
+.mobile-overlay a {
+    font-size: 2rem;
+    margin: 1rem 0;
+    color: white;
+    text-decoration: none;
+}
+
+/* Close button */
+.close-btn {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    font-size: 2.5rem;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+
+/* Header styling */
+header {
+    background-color: rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+header h1 {
+    margin: 1px 0;
+    font-size: 2.4em;
+    font-weight: 600;
+    text-align: center;
+}
+
+header p {
+    margin: 5px 0 0;
+    font-size: 1em;
+    text-align: center;
+}
+
+/* Default navigation styling for mobile */
+nav {
+    width: 100%;
+    background: var(--primary-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 20px;
+    position: static;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+}
+
+.nav-links li {
+    margin: 0 20px;
+}
+
+.nav-links a {
+    color: var(--accent-color);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color var(--transition-speed);
+}
+
+.nav-links a:hover {
+    color: #ffd800;
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+    .nav-links {
+        flex-direction: column;
+        width: 100%;
+        display: none;
+    }
+
+    .nav-links.active {
+        display: hidden;
+        background-color: var(--primary-color);
+    }
+
+    .nav-links li {
+        text-align: center;
+        padding: 10px 0;
+        margin: 0;
+        border-top: 1px solid #333;
+    }
+}
+
+/* Desktop Styles */
+@media (min-width: 768px) {
+    /* Hide hamburger icon */
+    #hamburger {
+    display: none;
+    }
+
+    /* Place nav as fixed below the top-bar */
+
+    nav {
+        position: fixed;
+        top: var(--top-bar-height);
+        width: 100%;
+        z-index: 1000;
+        padding: 10px 20px;
+    }
+
+    /* Always display nav links in desktop, so remove the active toggle */
+    .nav-links {
+        display: flex !important;
+        flex-direction: row;
+    }
+
+    .access-btn {
+        background-color: var(--accent-color);
+        color: var(--text-light);
+        border: none;
+        border-radius: 8px;
+        padding: 8px 14px;
+        margin: 0 5px;
+        font-size: 0.9rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background-color 0.3s, transform 0.2s;
+    }
+
+    .access-btn:hover {
+        background-color: #2980b9;
+        transform: translateY(-2px);
+    }
+
+    .accessibility-options,
+    .language-switch {
+        display: flex;
+        align-items: center;
+    }
+
+    /* Make buttons stack better on smaller screens */
+    @media (max-width: 768px) {
+        .accessibility-options,
+        .language-switch {
+            flex-direction: column;
+            align-items: flex-end;
+        }
+
+        .access-btn {
+            background-color: var(--accent-color);
+            color: var(--text-light);
+            margin: 4px 0;
+            width: 120px;
+        }
+    }
+
+
+    /* Adjust main padding-top to account for both top-bar and fixed nav */
+
+    main {
+        padding-top: calc(var(--top-bar-height) + var(--nav-height) + 20px);
+    }
+}
+
+@media (min-width: 768px) {
+    header h1 {
+        font-size: 2.4em;
+    }
+
+    header p,
+    p,
+    li {
+        font-size: 1.3em;
+    }
+
+    main {
+        padding: 40px 20px;
+    }
+}
+
+/* Card component styling */
+.card {
+    background: linear-gradient(135deg, var(--card-gradient-start), var(--card-gradient-end));
+    padding: 50px;
+    margin: 20px auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px var(--shadow);
+    max-width: 900px;
+    text-decoration: none;
+    transition: transform var(--transition-speed);
+    color: var(--text-light);
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card h2 {
+    color: var(--card-title-color);
+}
+
+.card a {
+    color: var(--card-link-color);
+    text-decoration: none;
+}
+
+.card a:hover {
+    color: #ffd800;
+}
+
+/* README container styling */
+#readme {
+background: var(--background-light);
+color: var(--card-text);
+padding: 20px;
+border-radius: 5px;
+max-width: 800px;
+margin: 20px auto 0;
+text-align: left;
+overflow-wrap: break-word;
+}
+
+/* Footer styling */
+footer {
+    background-color: rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    text-align: center;
+    font-size: 0.9em;
+    margin-top: 40px;
+}
+
+/* About section styling */
+#about {
+background: linear-gradient(135deg, var(--about-gradient-start), var(--about-gradient-end));
+padding: 20px;
+border-radius: 8px;
+box-shadow: 0 2px 8px var(--shadow);
+margin: 20px auto;
+max-width: 900px;
+}
+
+#about h2 {
+color: var(--about-text-color);
+}
+
+#about p,
+#about li {
+color: var(--text-light);
+}
+
+#about ul {
+padding-left: 50px;
+}
+
+#about ul li::before {
+content: "• ";
+color: var(--text-light);
+margin-right: 8px;
+}
