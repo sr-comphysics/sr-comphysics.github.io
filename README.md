@@ -75,7 +75,7 @@
 
 ###
 
-  This project is licensed under the MIT License. Please refer to the [LICENSE](https://github.com/sr-comphysics/sr-comphysics/blob/main/LICENSE) file.
+  This project is licensed under the MIT License. Please refer to the [LICENSE](https://github.com/sr-comphysics/sr-comphysics.github.io/blob/main/LICENSE) file.
 
 ###
 
