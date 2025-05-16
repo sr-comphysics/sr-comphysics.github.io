@@ -15,7 +15,7 @@
 <h3 align="center">I'm a physics graduate with a passion for computational particle physics and solving programming challenges. I love merging scientific rigor with practical coding to build efficient and impactful solutions</h3>
 
 - 📌 **Chennai, India**
-- 💬 Ask me about **Python, R, GNU Octave C and C++**
+- 💬 Ask me about **Python, R, GNU Octave, C and C++**
 - 📫 Email me **comphysics@keemail.me**
 
 ###
