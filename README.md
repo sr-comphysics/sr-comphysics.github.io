@@ -15,7 +15,7 @@
 <h3 align="center">I'm a physics graduate with a passion for computational particle physics and solving programming challenges. I love merging scientific rigor with practical coding to build efficient and impactful solutions</h3>
 
 - 📌 **Chennai, India**
-- 💬 Ask me about **Python, R, GNU Octave, C and C++**
+- 💬 Ask me about **Python, Julia, GNU Octave, C and C++**
 - 📫 Email me **comphysics@keemail.me**
 
 ###
@@ -34,8 +34,11 @@
   <a href="https://isocpp.org/" target="_blank" rel="noreferrer">
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg" height="42" alt="C++ Icon"  />
   <img width="12" /> </a>
-  <a href="https://www.r-project.org/" target="_blank" rel="noreferrer">
-  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/r/r-original.svg" height="42" alt="r logo"  />
+  <a href="https://https://octave.org/" target="_blank" rel="noreferrer">
+  <img src="https://en.wikipedia.org/wiki/GNU_Octave#/media/File:Gnu-octave-logo.svg" height="42" alt="r logo"  />
+  <img width="12" /> </a>
+  <a href="https://julialang.org/" target="_blank" rel="noreferrer">
+  <img src="https://en.wikipedia.org/wiki/Julia_(programming_language)#/media/File:Julia_Programming_Language_Logo.svg" height="42" alt="r logo"  />
   <img width="12" /> </a>
   <a href="https://numpy.org/" target="_blank" rel="noreferrer">
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/numpy/numpy-original.svg" height="42" alt="numpy logo"  />
