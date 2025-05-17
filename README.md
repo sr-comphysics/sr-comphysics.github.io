@@ -35,10 +35,10 @@
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg" height="42" alt="C++ Icon"  />
   <img width="12" /> </a>
   <a href="https://https://octave.org/" target="_blank" rel="noreferrer">
-  <img src="https://en.wikipedia.org/wiki/GNU_Octave#/media/File:Gnu-octave-logo.svg" height="42" alt="r logo"  />
+  <img src="https://en.wikipedia.org/wiki/GNU_Octave#/media/File:Gnu-octave-logo.svg" height="42" alt="GNU Octave logo"  />
   <img width="12" /> </a>
   <a href="https://julialang.org/" target="_blank" rel="noreferrer">
-  <img src="https://en.wikipedia.org/wiki/Julia_(programming_language)#/media/File:Julia_Programming_Language_Logo.svg" height="42" alt="r logo"  />
+  <img src="https://julialang.org/assets/infra/logo.svg" height="42" alt="Julia logo"  />
   <img width="12" /> </a>
   <a href="https://numpy.org/" target="_blank" rel="noreferrer">
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/numpy/numpy-original.svg" height="42" alt="numpy logo"  />
