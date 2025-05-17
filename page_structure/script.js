@@ -35,7 +35,7 @@ function toggleLanguage() {
 
         // Header Section
         document.getElementById("mainHeading").innerText = "கணக்கீட்டு இயற்பியல் மையத்திற்கு உங்களை வரவேற்கிறோம்";
-        document.getElementById("subHeading").innerText ="Python, C மற்றும் C++ உடன் இயற்பியல் சிக்கல்களுக்கு தீர்வு காணுதல் மற்றும் தரவு பகுப்பாய்வுகள் குறித்து ஆராய்வோம்.";
+        document.getElementById("subHeading").innerText ="Python, GNU Octave, C மற்றும் C++ உடன் இயற்பியல் சிக்கல்களுக்கு தீர்வு காணுதல் மற்றும் தரவு பகுப்பாய்வுகள் குறித்து ஆராய்வோம்.";
 
         // About Section
         document.getElementById("about-title").innerText = "இந்த தளம் பற்றி";
@@ -91,7 +91,7 @@ function toggleLanguage() {
 
         // Header Section
         document.getElementById("mainHeading").innerText = "Welcome to the Computational Physics Hub";
-        document.getElementById("subHeading").innerText = "Exploring Problem Solving and Data Analysis with Python, C, and C++";
+        document.getElementById("subHeading").innerText = "Exploring Problem Solving and Data Analysis with Python, GNU Octave, C, and C++";
 
         // About Section
         document.getElementById("about-title").innerText = "About This Site";
