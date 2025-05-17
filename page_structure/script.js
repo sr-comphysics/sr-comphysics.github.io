@@ -92,7 +92,7 @@ function toggleLanguage() {
 
         // Header Section
         document.getElementById("mainHeading").innerText = "Welcome to the Computational Physics Hub";
-        document.getElementById("subHeading").innerText = "Exploring Problem Solving and Data Analysis with Python, GNU Octave, C, and C++";
+        document.getElementById("subHeading").innerText = "Exploring Problem Solving and Data Analysis with Python, GNU Octave, Julia, C, and C++";
 
         // About Section
         document.getElementById("about-title").innerText = "About This Site";
