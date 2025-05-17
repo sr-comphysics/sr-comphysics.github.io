@@ -35,7 +35,7 @@
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg" height="42" alt="C++ Icon"  />
   <img width="12" /> </a>
   <a href="https://https://octave.org/" target="_blank" rel="noreferrer">
-  <img src="https://en.wikipedia.org/wiki/GNU_Octave#/media/File:Gnu-octave-logo.svg" height="42" alt="GNU Octave logo"  />
+  <img src="https://octave.org/img/octave-logo.svg" height="42" alt="GNU Octave logo"  />
   <img width="12" /> </a>
   <a href="https://julialang.org/" target="_blank" rel="noreferrer">
   <img src="https://julialang.org/assets/infra/logo.svg" height="42" alt="Julia logo"  />
