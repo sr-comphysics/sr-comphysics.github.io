@@ -102,7 +102,7 @@ function toggleLanguage() {
         // Programs Section
         document.getElementById("program-title").innerText = "Programs";
         document.getElementById("programs-text").innerText =
-        "Explore our dedicated folders for problem solving in physics:";
+        "Explore our dedicated directories for problem solving in physics:";
         document.getElementById("programs-list").innerHTML = `<li><a href="https://github.com/sr-comphysics/sr-comphysics.github.io/tree/main/comphysics_python" target="_blank">Python Programs</a></li>
         <li><a href="https://github.com/sr-comphysics/sr-comphysics.github.io/tree/main/comphysics_c" target="_blank">C Programs</a></li>
         <li><a href="https://github.com/sr-comphysics/sr-comphysics.github.io/tree/main/comphysics_cpp" target="_blank">C++ Programs</a></li>
