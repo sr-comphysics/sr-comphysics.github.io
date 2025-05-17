@@ -35,7 +35,7 @@ function toggleLanguage() {
 
         // Header Section
         document.getElementById("mainHeading").innerText = "கணக்கீட்டு இயற்பியல் மையத்திற்கு உங்களை வரவேற்கிறோம்";
-        document.getElementById("subHeading").innerText ="Python, GNU Octave, C மற்றும் C++ உடன் இயற்பியல் சிக்கல்களுக்கு தீர்வு காணுதல் மற்றும் தரவு பகுப்பாய்வுகள் குறித்து ஆராய்வோம்.";
+        document.getElementById("subHeading").innerText ="Python, GNU Octave, Julia, C மற்றும் C++ உடன் இயற்பியல் சிக்கல்களுக்கு தீர்வு காணுதல் மற்றும் தரவு பகுப்பாய்வுகள் குறித்து ஆராய்வோம்.";
 
         // About Section
         document.getElementById("about-title").innerText = "இந்த தளம் பற்றி";
@@ -49,7 +49,8 @@ function toggleLanguage() {
         document.getElementById("programs-list").innerHTML = `<li><a href="https://github.com/sr-comphysics/sr-comphysics.github.io/tree/main/comphysics_python" target="_blank">Python நிரல்கள்</a></li>
         <li><a href="https://github.com/sr-comphysics/sr-comphysics.github.io/tree/main/comphysics_c" target="_blank">C நிரல்கள்</a></li>
         <li><a href="https://github.com/sr-comphysics/sr-comphysics.github.io/tree/main/comphysics_cpp" target="_blank">C++ நிரல்கள்</a></li>
-        <li><a href="https://github.com/sr-comphysics/sr-comphysics.github.io/tree/main/comphysics_octave" target="_blank">GNU Octave நிரல்கள்</a></li>`;
+        <li><a href="https://github.com/sr-comphysics/sr-comphysics.github.io/tree/main/comphysics_octave" target="_blank">GNU Octave நிரல்கள்</a></li>
+        <li><a href="https://github.com/sr-comphysics/sr-comphysics.github.io/tree/main/comphysics_julia" target="_blank">Julia நிரல்கள்</a></li>`;
         document.getElementById("repo-link").innerHTML =
         'நிரல்களின் ஒருங்கிணைந்த களஞ்சியத்தை <a href="https://github.com/sr-comphysics/sr-comphysics.github.io" target="_blank">இங்கே காண்க.</a>';
 
@@ -105,7 +106,8 @@ function toggleLanguage() {
         document.getElementById("programs-list").innerHTML = `<li><a href="https://github.com/sr-comphysics/sr-comphysics.github.io/tree/main/comphysics_python" target="_blank">Python Programs</a></li>
         <li><a href="https://github.com/sr-comphysics/sr-comphysics.github.io/tree/main/comphysics_c" target="_blank">C Programs</a></li>
         <li><a href="https://github.com/sr-comphysics/sr-comphysics.github.io/tree/main/comphysics_cpp" target="_blank">C++ Programs</a></li>
-        <li><a href="https://github.com/sr-comphysics/sr-comphysics.github.io/tree/main/comphysics_octave" target="_blank">GNU Octave Programs</a></li>`;
+        <li><a href="https://github.com/sr-comphysics/sr-comphysics.github.io/tree/main/comphysics_octave" target="_blank">GNU Octave Programs</a></li>
+        <li><a href="https://github.com/sr-comphysics/sr-comphysics.github.io/tree/main/comphysics_julia" target="_blank">Julia Programs</a></li>`;
         document.getElementById("repo-link").innerHTML =
         'View the entire repository <a href="https://github.com/sr-comphysics/sr-comphysics.github.io" target="_blank">here</a>.';
 
