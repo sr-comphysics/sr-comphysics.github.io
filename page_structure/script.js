@@ -48,7 +48,8 @@ function toggleLanguage() {
         "இயற்பியல் சிக்கல்களை கணினி நிரல்கள் மூலம் தீர்வு காண எங்கள் பிரத்யேக மூலவரைவின் கோபுறைகளை கீழே காணலாம்:";
         document.getElementById("programs-list").innerHTML = `<li><a href="https://github.com/sr-comphysics/sr-comphysics.github.io/tree/main/comphysics_python" target="_blank">Python நிரல்கள்</a></li>
         <li><a href="https://github.com/sr-comphysics/sr-comphysics.github.io/tree/main/comphysics_c" target="_blank">C நிரல்கள்</a></li>
-        <li><a href="https://github.com/sr-comphysics/sr-comphysics.github.io/tree/main/comphysics_cpp" target="_blank">C++ நிரல்கள்</a></li>`;
+        <li><a href="https://github.com/sr-comphysics/sr-comphysics.github.io/tree/main/comphysics_cpp" target="_blank">C++ நிரல்கள்</a></li>
+        <li><a href="https://github.com/sr-comphysics/sr-comphysics.github.io/tree/main/comphysics_octave" target="_blank">GNU Octave நிரல்கள்</a></li>`;
         document.getElementById("repo-link").innerHTML =
         'நிரல்களின் ஒருங்கிணைந்த களஞ்சியத்தை <a href="https://github.com/sr-comphysics/sr-comphysics.github.io" target="_blank">இங்கே காண்க.</a>';
 
@@ -76,7 +77,7 @@ function toggleLanguage() {
         <a href="#contact" onclick="toggleMobileMenu()">தொடர்பு கொள்ள</a>`;
 
         // Footer Section
-        document.getElementById("footer-text").innerHTML = '&copy; This project is open source and available under the MIT License.';
+        document.getElementById("footer-text").innerHTML = '&copy; MIT திறமூல மென்பொருள் அனுமதியின்  கீழ் உரிமம் பெற்றது.';
 
         // Language button to allow switching back to English
         document.getElementById("languageButton").innerText = "English";
@@ -103,7 +104,8 @@ function toggleLanguage() {
         "Explore our dedicated folders for problem solving in physics:";
         document.getElementById("programs-list").innerHTML = `<li><a href="https://github.com/sr-comphysics/sr-comphysics.github.io/tree/main/comphysics_python" target="_blank">Python Programs</a></li>
         <li><a href="https://github.com/sr-comphysics/sr-comphysics.github.io/tree/main/comphysics_c" target="_blank">C Programs</a></li>
-        <li><a href="https://github.com/sr-comphysics/sr-comphysics.github.io/tree/main/comphysics_cpp" target="_blank">C++ Programs</a></li>`;
+        <li><a href="https://github.com/sr-comphysics/sr-comphysics.github.io/tree/main/comphysics_cpp" target="_blank">C++ Programs</a></li>
+        <li><a href="https://github.com/sr-comphysics/sr-comphysics.github.io/tree/main/comphysics_octave" target="_blank">GNU Octave Programs</a></li>`;
         document.getElementById("repo-link").innerHTML =
         'View the entire repository <a href="https://github.com/sr-comphysics/sr-comphysics.github.io" target="_blank">here</a>.';
 
