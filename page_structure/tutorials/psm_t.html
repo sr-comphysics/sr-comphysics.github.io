@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Pauli Spin Matrix Commutators Tutorial</title>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="page_structure/test_style.css" />
+
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']]
+      },
+      svg: { fontCache: 'none' },
+      options: { renderActions: { addMenu: [] } },
+      loader: { load: ['[tex]/ams'] },
+      chtml: { scale: 1 }
+    };
+  </script>
+  <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+</head>
+
+<body>
+  <!-- Header -->
+  <header>
+    <h1 id="t_mainHeading">Calculating Pauli Spin Matrix with our Commutator function in GNU Octave</h1>
+    <p id="t_subHeading">
+      This tutorial demonstrates how to compute the commutator of Pauli spin matrices using an GNU Octave function.
+    </p>
+  </header>
+
+  <main class="tutorial-content">
+    <!-- Commutator Section -->
+    <section class="card" id="commutator">
+      <h2>What is a Commutator?</h2>
+      <p>In Quantum Mechanics, the commutator of two operators A, B is the operator:</p>
+      <p>$$ C = [A, B] = AB - BA $$</p>
+    </section>
+
+    <!-- Pauli Spin Matrices Section -->
+    <section class="card" id="pauli_spin">
+      <h2>Pauli Spin Matrices</h2>
+      <p>The Pauli matrices are complex arrays that arise in the treatment of spin in quantum mechanics.</p>
+      <ul>
+        <li>\[
+          S_x = \frac{\hbar}{2} \begin{pmatrix}
+          0 & 1 \\
+          1 & 0
+          \end{pmatrix}
+          \]</li>
+        <li>\[
+          S_y = \frac{\hbar}{2} \begin{pmatrix}
+          0 & -i \\
+          i & 0
+          \end{pmatrix}
+          \]</li>
+        <li>\[
+          S_z = \frac{\hbar}{2} \begin{pmatrix}
+          1 & 0 \\
+          0 & -1
+          \end{pmatrix}
+          \]</li>
+        <li>but we will work with their unitless equivalents</li>
+        <li>\[
+          \sigma_x = \begin{pmatrix}
+          0 & 1 \\
+          1 & 0
+          \end{pmatrix}
+          \]</li>
+        <li>\[
+          \sigma_y = \begin{pmatrix}
+          0 & -i \\
+          i & 0
+          \end{pmatrix}
+          \]</li>
+        <li>\[
+          \sigma_z = \begin{pmatrix}
+          1 & 0 \\
+          0 & -1
+          \end{pmatrix}
+          \]</li>
+      </ul>
+    </section>
+
+    <!-- Step 1 Section -->
+    <section class="card" id="step_1">
+      <h2>Step 1: Define the Commutator Function</h2>
+      <p>Create a file named <code>commutator.m</code> with the following content:</p>
+      <div class="code-block">
+        <button class="copy-btn">Copy</button>
+        <pre><code>function C = commutator(A, B)
+  AB = A * B;
+  BA = B * A;
+  C = AB - BA;
+end
+        </code></pre>
+      </div>
+    </section>
+
+    <!-- Step 2 Section -->
+    <section class="card" id="step_2">
+      <h2>Step 2: Compute Commutators in GNU Octave</h2>
+      <p>Open GNU Octave and define the Pauli spin matrices:</p>
+      <div class="code-block">
+        <button class="copy-btn">Copy</button>
+        <pre><code>sigma_x = [0 1; 1 0];
+sigma_y = [0 -1i; 1i 0];
+sigma_z = [1 0; 0 -1];
+        </code></pre>
+      </div>
+      <p>Then compute a commutator, for example \([\sigma_x, \sigma_y]\):</p>
+      <div class="code-block">
+        <button class="copy-btn">Copy</button>
+        <pre><code>commutator(sigma_x, sigma_y)
+        </code></pre>
+      </div>
+    </section>
+
+    <!-- Result Section -->
+    <section class="card" id="result">
+      <h2>Expected Results</h2>
+      <ul>
+      <div class="code-block">
+        <pre><code>>> commutator(sigma_x, sigma_y)
+ans =
+
+   0 + 2i   0 + 0i
+   0 + 0i   0 - 2i
+        </code></pre>
+      </div>
+        <li> \(which \ is,\)
+        <li>\([\sigma_x, \sigma_y] = 2i \sigma_z\)</li>
+        <li>\(Similarly,\)
+        <li>\([\sigma_y, \sigma_z] = 2i \sigma_x\)</li>
+        <li>\([\sigma_z, \sigma_x] = 2i \sigma_y\)</li>
+      </ul>
+    </section>
+
+  </main>
+
+  <footer id="back_home">
+    <p><a href="https://github.com/sr-comphysics/sr-comphysics.github.io/index.html">← Back to Home</a></p>
+  </footer>
+
+  <script>
+    // Toggle mobile menu visibility
+    function toggleMobileMenu() {
+      const menu = document.getElementById('mobileMenu');
+      menu.classList.toggle('show');
+    }
+
+    // Copy button functionality
+    document.querySelectorAll('.copy-btn').forEach(button => {
+      button.addEventListener('click', () => {
+        const codeBlock = button.nextElementSibling.querySelector('code');
+        const text = codeBlock.innerText;
+        navigator.clipboard.writeText(text).then(() => {
+          button.textContent = 'Copied!';
+          setTimeout(() => (button.textContent = 'Copy'), 1500);
+        });
+      });
+    });
+
+  </script>
+    
+</body>
+</html>
