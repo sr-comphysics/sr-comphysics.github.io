@@ -54,6 +54,10 @@ function toggleLanguage() {
         document.getElementById("repo-link").innerHTML =
         'நிரல்களின் ஒருங்கிணைந்த களஞ்சியத்தை <a href="https://github.com/sr-comphysics/sr-comphysics.github.io" target="_blank">இங்கே காண்க.</a>';
 
+        // Tutorial Section
+        document.getElementById("tutorials-title").innerText = "பயிற்சிகள்";
+        document.getElementById("tutorials-text").innerText = "இந்த களஞ்சியத்தில் உள்ள வரைவுகளை பயன்படுத்துவது குறித்த பயிற்சிகளை இங்கே காணலாம்";
+
         // Repository Overview Section
         document.getElementById("repo-title").innerText = "களஞ்சியம் பற்றிய சிறு விளக்கம்";
 
@@ -66,6 +70,7 @@ function toggleLanguage() {
 
         document.getElementById("nav-links").innerHTML = `<li><a href="#">முகப்பு</a></li>
         <li><a href="#programs">நிரல்கள்</a></li>
+        <li><a href="#tutorials">பயிற்சிகள்</a></li>
         <li><a href="#repo-readme">களஞ்சியம்</a></li>
         <li><a href="#about">தளம் பற்றி</a></li>
         <li><a href="#contact">தொடர்பு கொள்ள</a></li>`;
@@ -73,6 +78,7 @@ function toggleLanguage() {
         document.getElementById("mobileMenu").innerHTML = `<button class="close-btn" onclick="toggleMobileMenu()">x</button>
         <a href="#home" onclick="toggleMobileMenu()">முகப்பு</a>
         <a href="#programs" onclick="toggleMobileMenu()">நிரல்கள்</a>
+        <a href="#tutorials" onclick="toggleMobileMenu()">பயிற்சிகள்</a>
         <a href="#repo-readme" onclick="toggleMobileMenu()">களஞ்சியம்</a>
         <a href="#about" onclick="toggleMobileMenu()">தளம் பற்றி</a>
         <a href="#contact" onclick="toggleMobileMenu()">தொடர்பு கொள்ள</a>`;
@@ -111,6 +117,11 @@ function toggleLanguage() {
         document.getElementById("repo-link").innerHTML =
         'View the entire repository <a href="https://github.com/sr-comphysics/sr-comphysics.github.io" target="_blank">here</a>.';
 
+        // Tutorial Section
+        document.getElementById("tutorials-title").innerText = "Tutorials";
+        document.getElementById("tutorials-text").innerText = "Here are tutorials for using the code in this repository...";
+
+
         // Repository Overview Section
         document.getElementById("repo-title").innerText = "Repository Overview";
 
@@ -124,6 +135,7 @@ function toggleLanguage() {
 
         document.getElementById("nav-links").innerHTML = `<li><a href="#">Home</a></li>
         <li><a href="#programs">Programs</a></li>
+        <li><a href="#tutorials">Tutorials</a></li>
         <li><a href="#repo-readme">Repository</a></li>
         <li><a href="#about">About</a></li>
         <li><a href="#contact">Contact</a></li>`;
@@ -131,6 +143,7 @@ function toggleLanguage() {
         document.getElementById("mobileMenu").innerHTML = `<button class="close-btn" onclick="toggleMobileMenu()">x</button>
         <a href="#home" onclick="toggleMobileMenu()">Home</a>
         <a href="#programs" onclick="toggleMobileMenu()">Programs</a>
+        <a href="#tutorials" onclick="toggleMobileMenu()">Tutorials</a>
         <a href="#repo-readme" onclick="toggleMobileMenu()">Repository</a>
         <a href="#about" onclick="toggleMobileMenu()">About</a>
         <a href="#contact" onclick="toggleMobileMenu()">Contact</a>`;
