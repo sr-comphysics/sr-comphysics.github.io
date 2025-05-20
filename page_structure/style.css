@@ -1,468 +1,341 @@
-/* Import Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
-
-/* CSS Variables for easy theming */
-:root {
-    --primary-color: #1d0f3c;
-    --background-light: #0a1028;
-    --text-light: #fff;
-    --card-text: #ccc;
-    --shadow: rgba(0, 0, 0, 0.90);
-    --transition-speed: 0.3s;
-    --about-gradient-start: #294172;
-    --about-gradient-end: #130a28;
-    --about-text-color: #ffea00;
-    --card-gradient-start: #130a28;
-    --card-gradient-end: #000;
-    --card-title-color: #9b59b6;
-    --card-link-color: #3498db;
-    --accent-color: #3498db;
-    --top-bar-height: 50px;
-    --nav-height: 50px;
-    --hamburger-space: 50px;
+/* Base styles */
+html, body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  transition: background 0.3s, color 0.3s;
 }
 
-/* Global styles */
-* {
-    list-style: none;
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+/* Dark Mode */
+html.dark-mode, body.dark-mode {
+  background-color: #121212;
+  color: #f0f0f0;
 }
 
-/* Body styling */
-body {
-    font-family: 'Open Sans', sans-serif;
-    background-color: var(--primary-color);
-    line-height: 2.0;
-    scroll-behavior: smooth;
-    color: var(--text-light);
-    transition: background-color var(--transition-speed), color var(--transition-speed);
-    padding-top: calc(var(--top-bar-height) + var(--hamburger-space));
-    max-width: 800px;
-    margin: auto;
-    padding-left: 20px;
-    padding-right: 20px;
+/* Light Mode */
+html.light-mode, body.light-mode {
+  background-color: #ffffff;
+  color: #000000;
 }
 
 /* High Contrast Mode */
-body.high-contrast {
-    background-color: #000;
-    color: #ffd800;
+html.high-contrast, body.high-contrast {
+  background-color: #000;
+  color: #fff;
 }
 
-body.high-contrast header,
-body.high-contrast nav,
-body.high-contrast footer {
-    background-color: #222;
+html.high-contrast a,
+html.high-contrast button,
+body.high-contrast a,
+body.high-contrast button {
+  color: yellow !important;
+  background-color: black !important;
+  border: 2px solid yellow !important;
 }
 
-/* Top bar */
-.top-bar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 10px;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: var(--top-bar-height);
-    background-color: var(--primary-color);
-    border-bottom: 1px solid #333;
-    z-index: 1000;
+/* Tamil Translation Mode */
+html.tamil-translation, body.tamil-translation {
+  font-family: 'Noto Sans Tamil', "Latha", Arial, sans-serif;
+  font-size: 1.1rem;
 }
 
-.top-bar > .hamburger,
-.top-bar > .accessibility-options {
-    display: flex;
-    align-items: center;
+/* Top navigation */
+.top-nav {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #222;
+  color: white;
+  padding: 0.5rem 1rem;
 }
 
-/* Hamburger Icon */
-.hamburger {
-    font-size: 2rem;
-    cursor: pointer;
-    display: none;
+html.light-mode .top-nav,
+body.light-mode .top-nav {
+  background-color: #eee;
+  color: #000;
 }
 
-/* Mobile Menu Overlay */
-.mobile-overlay {
-    position: fixed;
-    top: 0; left: 0;
-    width: 100vw;
-    height: 100vh;
-    background-color: rgba(0, 0, 0, 0.95);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    z-index: 999;
-    transform: translateY(-100%);
-    transition: transform 0.3s ease-in-out;
+.logo {
+  font-weight: bold;
+  font-size: 1.2rem;
+  text-decoration: none;
+  color: inherit;
 }
 
-.mobile-overlay.show {
-    transform: translateY(0);
-}
-
-.mobile-overlay a {
-    font-size: 2rem;
-    margin: 1rem 0;
-    color: white;
-    text-decoration: none;
-}
-
-/* Close button */
-.close-btn {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    font-size: 2.5rem;
-    background: none;
-    border: none;
-    color: white;
-    cursor: pointer;
-}
-
-/* Header */
-header {
-    background-color: rgba(0, 0, 0, 0.2);
-    padding: 20px;
-    margin-top: 10px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-header h1 {
-    margin: 1px 0;
-    font-size: 2.4em;
-    font-weight: 600;
-    text-align: center;
-}
-
-header p {
-    margin: 5px 0 0;
-    font-size: 1em;
-    text-align: center;
-}
-
-/* Navigation */
-nav {
-    width: 100%;
-    background: var(--primary-color);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 10px 20px;
-    position: static;
-}
-
+/* Nav Links (Desktop) */
 .nav-links {
-    list-style: none;
-    display: flex;
-}
-
-.nav-links li {
-    margin: 0 20px;
+  display: flex;
+  list-style: none;
+  gap: 1rem;
+  justify-content: center;
+  padding: 0.5rem 0;
 }
 
 .nav-links a {
-    color: var(--accent-color);
-    text-decoration: none;
-    font-weight: 600;
-    transition: color var(--transition-speed);
+  color: inherit;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 0.1rem 1rem;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
 }
 
 .nav-links a:hover {
-    color: #ffd800;
+  background-color: #2d3748;
 }
 
-/* Mobile Styles */
-@media (max-width: 768px) {
-    .hamburger {
-        display: block;
-    }
-
-    .nav-links {
-        flex-direction: column;
-        width: 100%;
-        display: none;
-    }
-
-    .nav-links.active {
-        display: flex;
-        background-color: var(--primary-color);
-    }
-
-    .nav-links li {
-        text-align: center;
-        padding: 10px 0;
-        margin: 0;
-        border-top: 1px solid #333;
-    }
-
-    .accessibility-options,
-    .language-switch {
-        flex-direction: column;
-        align-items: flex-end;
-    }
-
-    .access-btn {
-        background-color: var(--accent-color);
-        color: var(--text-light);
-        margin: 4px 0;
-        width: 120px;
-    }
+/* Accessibility Buttons */
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
-/* Desktop Styles */
-@media (min-width: 768px) {
-    #hamburger {
-        display: none;
-    }
-
-    nav {
-        position: fixed;
-        top: var(--top-bar-height);
-        width: 100%;
-        z-index: 1000;
-        padding: 10px 20px;
-    }
-
-    .nav-links {
-        display: flex;
-        flex-direction: row;
-    }
-
-    .access-btn {
-        background-color: var(--accent-color);
-        color: var(--text-light);
-        border: none;
-        border-radius: 8px;
-        padding: 8px 14px;
-        margin: 0 5px;
-        font-size: 0.9rem;
-        font-weight: 600;
-        cursor: pointer;
-        transition: background-color 0.3s, transform 0.2s;
-    }
-
-    .access-btn:hover {
-        background-color: #2980b9;
-        transform: translateY(-2px);
-    }
-
-    .accessibility-options,
-    .language-switch {
-        display: flex;
-        align-items: center;
-    }
-
-    main {
-        padding-top: calc(var(--top-bar-height) + var(--nav-height) + 20px);
-        padding: 40px 20px;
-    }
-
-    header h1 {
-        font-size: 2.4em;
-    }
-
-    header p,
-    p,
-    li {
-        font-size: 1.3em;
-    }
+.nav-right button {
+  background: none;
+  border: none;
+  font-size: 0.9rem;
+  cursor: pointer;
+  color: inherit;
 }
 
-/* Card component */
+.nav-right button:hover {
+  background-color: #2d3748;
+}
+
+#languageButton {
+background: #007acc;
+color: white;
+padding: 0.1rem 1rem;
+border-radius: 4px;
+cursor: pointer;
+font-weight: 600;
+transition: background-color 0.3s ease;
+}
+
+#languageButton:hover {
+background: #005fa3;
+}
+
+/* Mobile Menu */
+.mobile-menu {
+  display: none; /* Hidden by default */
+  flex-direction: column;
+  background-color: #333;
+  padding: 1rem;
+  position: absolute;
+  top: 60px;
+  right: 0;
+  z-index: 999;
+}
+
+/* This rule makes the menu visible when .show is applied */
+.mobile-menu.show {
+  display: flex;
+}
+
+.mobile-menu a {
+  color: white;
+  text-decoration: none;
+  margin-bottom: 1rem;
+}
+
+.mobile-menu .close-btn {
+  align-self: flex-end;
+  font-size: 1.5rem;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+/* Adjust mobile menu for light mode */
+html.light-mode .mobile-menu,
+body.light-mode .mobile-menu {
+  background-color: #f0f0f0;
+}
+
+html.light-mode .mobile-menu a,
+html.light-mode .mobile-menu .close-btn,
+body.light-mode .mobile-menu a,
+body.light-mode .mobile-menu .close-btn {
+  color: black;
+}
+
+/* Sections and Cards */
+section {
+  padding: 2rem;
+}
+
 .card {
-    background: linear-gradient(135deg, var(--card-gradient-start), var(--card-gradient-end));
-    padding: 50px;
-    margin: 20px auto;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px var(--shadow);
-    max-width: 900px;
-    text-decoration: none;
-    transition: transform var(--transition-speed);
-    color: var(--text-light);
-}
-
-.card:hover {
-    transform: translateY(-5px);
-}
-
-.card h2 {
-    color: var(--card-title-color);
+  background-color: rgba(255, 255, 255, 0.05);
+  padding: 1rem;
+  border-radius: 8px;
+  margin-top: 1rem;
+  border: 1px solid #444;
 }
 
 .card a {
-    color: var(--card-link-color);
-    text-decoration: none;
+  color: #3498db;
+  text-decoration: none;
 }
 
 .card a:hover {
-    color: #ffd800;
+  color: #ffd800;
 }
 
-/* README container */
-#readme {
-    background: var(--background-light);
-    color: var(--card-text);
-    padding: 20px;
-    border-radius: 5px;
-    max-width: 800px;
-    margin: 20px auto 0;
-    text-align: left;
-    overflow-wrap: break-word;
+html.light-mode .card,
+body.light-mode .card {
+  background-color: #f9f9f9;
+  border: 1px solid #ccc;
 }
 
-/* Footer */
 footer {
-    background-color: rgba(0, 0, 0, 0.2);
-    padding: 20px;
-    text-align: center;
-    font-size: 0.9em;
-    margin-top: 40px;
+  text-align: center;
+  padding: 0.2rem;
+  background-color: #222;
+  color: white;
 }
 
-/* About Section */
-#about {
-    background: linear-gradient(135deg, var(--about-gradient-start), var(--about-gradient-end));
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px var(--shadow);
-    margin: 20px auto;
-    max-width: 900px;
+html.light-mode footer,
+body.light-mode footer {
+  background-color: #eee;
+  color: #000;
 }
 
-#about h2 {
-    color: var(--about-text-color);
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+  }
+
+  #hamburger {
+    display: inline;
+  }
+
+  /* Even on small screens, the .mobile-menu is hidden unless .show is added */
+  .mobile-menu {
+    display: none;
+  }
+
+  .nav-right {
+    display: flex;
+    gap: 0.3rem;
+  }
 }
 
-#about p,
-#about li {
-    color: var(--text-light);
+@media (min-width: 769px) {
+  #hamburger {
+    display: none;
+  }
+
+  .mobile-menu {
+    display: none !important;
+  }
 }
 
-#about ul {
-    padding-left: 50px;
+.mobile-menu {
+  position: fixed;
+  display: none;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s, visibility 0.3s;
 }
 
-#about ul li::before {
-    content: "• ";
-    color: var(--text-light);
-    margin-right: 8px;
+.mobile-menu.show {
+  opacity: 1;
+  visibility: visible;
+  display: flex;
 }
 
-/* Tutorial code styling */
-body {
-  max-width: 100%;
-  margin: 0;
-  padding-left: 2rem;
-  padding-right: 2rem;
-  background-color: var(--primary-color);
-  color: var(--text-light);
-  font-family: 'Open Sans', sans-serif;
-  line-height: 1.6;
+.mobile-menu a {
+  color: white;
+  text-decoration: none;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
 }
 
-.tutorial-content {
-  max-width: 100%;
-  margin: 0 auto;
-  padding: 0 2rem;
-}
-
-.card {
-    background: linear-gradient(135deg, var(--card-gradient-start), var(--card-gradient-end));
-    padding: 50px;
-    margin: 20px auto;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px var(--shadow);
-    max-width: 900px;
-    text-decoration: none;
-    transition: transform var(--transition-speed);
-    color: var(--text-light);
-}
-
-
-/* Headings inside cards */
-.card h2 {
-  font-weight: 600;
-  color: #9b59b6;
-  margin-top: 0;
-  font-size: 2em;
-}
-
-/* Lists inside cards */
-.card ul,
-.card li {
-  margin: 0.5rem 0;
-  padding-left: 1.2rem;
-}
-
-/* Paragraphs inside cards */
-.card p {
-  margin: 1rem 0;
-  font-size: 2em;
-}
-
-/* Code block styling */
-/* Code blocks */
-.code-block {
-    position: relative;
-    margin: 20px 0;
-}
-
-pre {
-    background: #0a1028;
-    padding: 15px;
-    border-radius: 5px;
-    overflow-x: auto;
-    color: #00ffcc;
-    font-family: monospace;
-    font-size: 1.2em;
-}
-
-code {
-    white-space: pre-wrap;
-    display: block;
-}
-
-/* Copy button for code blocks */
-.copy-btn {
+.mobile-menu .close-btn {
   position: absolute;
-  top: 8px;
-  right: 8px;
-  background-color: #444;
+  top: 1rem;
+  right: 2rem;
+  font-size: 2rem;
+  background: none;
   border: none;
   color: white;
-  padding: 0.25rem 0.6rem;
-  font-size: 0.85rem;
   cursor: pointer;
-  border-radius: 3px;
+  padding: 0.5rem;
+  width: 3rem;
+  height: 3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
   transition: background-color 0.3s ease;
-  user-select: none;
 }
 
-.copy-btn:hover,
-.copy-btn:focus {
-  background-color: #666;
-  outline: none;
+.mobile-menu .close-btn:hover {
+  background-color: rgba(255, 255, 255, 0.2);
 }
 
-/* MathJax rendered formulas inside cards */
-.card p, .card li {
-  font-size: 1em;
-}
-
-/* Responsive adjustment */
-@media (max-width: 480px) {
-  .tutorial-content {
-    padding: 0 0.5rem;
+@media (max-width: 768px) {
+  .mobile-menu .close-btn {
+    top: 0.5rem;
+    right: 2rem;
+    font-size: 1.5rem;
+    width: 2.5rem;
+    height: 2.5rem;
   }
-  .card {
-    padding: 1rem 1rem;
-  }
+}
+
+
+
+/* Code blocks and copy button */
+.code-block {
+  position: relative;
+  background-color: #121212;
+  color: #dcdcdc;
+  border-radius: 6px;
+  padding: 1rem;
+  overflow-x: auto;
+  margin: 1rem 0;
+  font-family: 'Source Code Pro', monospace;
+  font-size: 0.9rem;
+  border: 1px solid #333;
+}
+
+.code-block button.copy-btn {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.25em;
+  display: inline-flex;
+  align-items: center;
+  color: #ccc;
+  transition: color 0.3s ease;
+}
+
+.code-block button.copy-btn:hover {
+  color: #00bfff;
+}
+
+.copy-btn svg {
+  pointer-events: none;
+  display: block;
+  fill: currentColor;
 }
