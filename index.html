@@ -1,132 +1,109 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Computational Physics Hub</title>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap"
-      rel="stylesheet"
-    />
-    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-
-    <!-- Link to CSS file -->
-    <link rel= "stylesheet" href= "page_structure/style.css"/>
-
-  </head>
-  <body>
-
-  <!-- Top bar; desktop nav links are placed here -->
-    <div class="top-bar">
-
-    <!-- Hamburger Icon (only visible on mobile) -->
-    <div id="hamburger" class="hamburger" onclick="toggleMobileMenu()">☰</div>
-
-    <!-- Mobile Menu Overlay -->
-    <div id="mobileMenu" class="mobile-overlay">
-        <button class="close-btn" onclick="toggleMobileMenu()">x</button>
-        <a href="#home" onclick="toggleMobileMenu()">Home</a>
-        <a href="#programs" onclick="toggleMobileMenu()">Programs</a>
-        <a href="#tutorials" onclick="toggleMobileMenu()">Tutorials</a>
-        <a href="#repo-readme" onclick="toggleMobileMenu()">Repository</a>
-        <a href="#about" onclick="toggleMobileMenu()">About</a>
-        <a href="#contact" onclick="toggleMobileMenu()">Contact</a>
-    </div>
-
-    <!-- Top bar section -->
-      <div class="accessibility-options">
-        <button id="screenReader" class="access-btn" onclick="activateScreenReader()">
-          Screen Reader
-        </button>
-        <button id="contrastButton" class="access-btn" onclick="toggleHighContrast()">
-          High Contrast
-        </button>
-      </div>
-      <div class="language-switch">
-        <button id="languageButton" class="access-btn" onclick="toggleLanguage()">தமிழ்</button>
-      </div>
-    </div>
-
-    <!-- Header Section -->
-    <header>
-      <h1 id="mainHeading">Welcome to the Computational Physics Hub</h1>
-      <p id="subHeading">Exploring Problem Solving and Data Analysis with Python, GNU Octave, Julia, C, and C++</p>
-    </header>
-
-    <!-- Navigation menu container -->
-    <nav>
-      <ul class="nav-links" id="nav-links">
-        <li><a href="#">Home</a></li>
-        <li><a href="#programs">Programs</a></li>
-        <li><a href="#tutorials">Tutorials</a></li>
-        <li><a href="#repo-readme">Repository</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
+<html lang="en" class="dark-mode">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Computational Physics Hub - Home</title>
+  <!-- Include Tamil font for Tamil translation mode -->
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Tamil&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="page_structure/style.css" />
+</head>
+<body>
+  <header class="top-nav">
+    <a href="#" class="logo">sr-comphysics</a>
+    <nav class="nav-links" id = "navLinks">
+      <a href="#programs">Programs</a>
+      <a href="#tutorial">Tutorial</a>
+      <a href="#repository">Repository</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
     </nav>
+    <div class="nav-right">
 
+      <!-- modeToggle which matches our JS -->
+      <button id="modeToggle" aria-label="Toggle Dark/Light">🌓</button>
+      <button id="contrastToggle" aria-label="Toggle High Contrast">🔳</button>
+      <button id="languageButton" aria-label="Toggle Language">தமிழ்</button>
+      <button id="hamburger" aria-label="Toggle Menu">☰</button>
+    </div>
+  </header>
 
-    <main>
+  <!-- Mobile navigation -->
+  <div class="mobile-menu" id="mobileMenu" role="navigation">
+    <button class="close-btn" aria-label="Close Menu">×</button>
+    <a href="#programs">Programs</a>
+    <a href="#tutorial">Tutorial</a>
+    <a href="#repository">Repository</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+  </div>
 
-    <!-- Programs Section -->
-      <section id="programs" class="card">
-        <h2 id="program-title">Programs</h2>
-        <p id="programs-text">Explore our dedicated directories for problem solving in physics:</p>
+  <!-- Header Section -->
+  <section id="header">
+    <h1>Welcome to the Computational Physics Hub</h1>
+    <p>Exploring Problem Solving and Data Analysis with Python, GNU Octave, Julia, C, and C++</p>
+  </section>
 
-        <ul id="programs-list">
-          <li><a href="https://github.com/sr-comphysics/sr-comphysics.github.io/tree/main/comphysics_python" target="_blank">Python Programs</a></li>
-          <li><a href="https://github.com/sr-comphysics/sr-comphysics.github.io/tree/main/comphysics_c" target="_blank">C Programs</a></li>
-          <li><a href="https://github.com/sr-comphysics/sr-comphysics.github.io/tree/main/comphysics_cpp" target="_blank">C++ Programs</a></li>
-          <li><a href="https://github.com/sr-comphysics/sr-comphysics.github.io/tree/main/comphysics_octave" target="_blank">GNU Octave Programs</a></li>
-          <li><a href="https://github.com/sr-comphysics/sr-comphysics.github.io/tree/main/comphysics_julia" target="_blank">Julia Programs</a></li>
-        </ul>
+  <!-- Programs Section -->
+  <section id="programs">
+    <h2>Programs</h2>
+    <div class="card">
+      <p>Explore our dedicated directories for problem solving in physics:</p>
+      <ul>
+        <li><a href="https://github.com/sr-comphysics/sr-comphysics.github.io/tree/main/comphysics_python" target="_blank">Python Programs</a></li>
+        <li><a href="https://github.com/sr-comphysics/sr-comphysics.github.io/tree/main/comphysics_c" target="_blank">C Programs</a></li>
+        <li><a href="https://github.com/sr-comphysics/sr-comphysics.github.io/tree/main/comphysics_cpp" target="_blank">C++ Programs</a></li>
+        <li><a href="https://github.com/sr-comphysics/sr-comphysics.github.io/tree/main/comphysics_octave" target="_blank">GNU Octave Programs</a></li>
+        <li><a href="https://github.com/sr-comphysics/sr-comphysics.github.io/tree/main/comphysics_julia" target="_blank">Julia Programs</a></li>
+      </ul>
+      <p>View the entire repository <a href="https://github.com/sr-comphysics/sr-comphysics.github.io" target="_blank">here</a>.</p>
+    </div>
+  </section>
 
-        <p id="repo-link">View the entire repository<a href="https://github.com/sr-comphysics/sr-comphysics.github.io" target="_blank"> here</a>.</p>
-      </section>
-      
-    <!-- Tutorials Section -->
-      <section id="tutorials" class="card">
-        <h2 id="tutorials-title">Tutorials</h2>
-        <p id="tutorials-text">Here are tutorials for using the code in this repository...</p>
-        <ul id="programs-list">
-          <li><a href="page_structure/tutorials/psm_t.html">Calculating Pauli Spin Matrix with our Commutator function in GNU Octave</a></li>
-      </section>
+  <!-- Tutorial Section -->
+  <section id="tutorial">
+    <h2>Tutorial</h2>
+    <div class="card">
+      <p>Here are tutorials for using the code in this repository...</p>
+      <ul>
+        <li><a href="page/tutorial/tutorial.html">Calculating Pauli Spin Matrix with our Commutator function in GNU Octave</a></li>
+      </ul>
+    </div>
+  </section>
 
-      <!-- Repository Overview Section -->
-      <section id="repo-readme" class="card">
-        <h2 id="repo-title">Repository Overview</h2>
-        <div id="readme">Loading repository information...</div>
-      </section>
+  <!-- Repository Section -->
+  <section id="repository">
+    <h2>Repository Overview</h2>
+    <div class="card">
+      Loading repository information...
+    </div>
+  </section>
 
-      <!-- About Section -->
-      <section id="about">
-        <h2 id="about-title">About This Site</h2>
-        <p id="about-text">
-          This site is dedicated to enthusiasts and professionals interested in
-          computational physics, advanced problem solving, and data analysis.
-        </p>
-      </section>
+  <!-- About Section -->
+  <section id="about">
+    <h2>About This Site</h2>
+    <div class="card">
+      <p>This site is dedicated to enthusiasts and professionals interested in computational physics, advanced problem solving, and data analysis.</p>
+    </div>
+  </section>
 
-      <!-- Contact Section -->
-      <section id="contact" class="card">
-        <h2 id="contact-title">Contact Us</h2>
-        <p id="contact-text">If you have questions or want to collaborate, get in touch:</p>
-        <ul id="contact-list">
-          <li>Personal: <a href="mailto:sunilsubbarayan10@gmail.com">sunilsubbarayan10@gmail.com</a>
-          </li>
-          <li>GitHub Hub: <a href="mailto:comphysics@keemail.me">comphysics@keemail.me</a></li>
-        </ul>
-      </section>
-    </main>
+  <!-- Contact Section -->
+  <section id="contact">
+    <h2>Contact Us</h2>
+    <div class="card">
+      <p>If you have questions or want to collaborate, get in touch:</p>
+      <ul>
+        <li>Personal: <a href="mailto:sunilsubbarayan10@gmail.com">sunilsubbarayan10@gmail.com</a></li>
+        <li>GitHub Hub: <a href="mailto:comphysics@keemail.me">comphysics@keemail.me</a></li>
+      </ul>
+    </div>
+  </section>
 
-    <!-- Footer Section -->
-    <footer>
-      <p id="footer-text">&copy; This project is open source and available under the MIT License.</p>
-    </footer>
+  <!-- Footer -->
+  <footer id = "footer">
+    <p>&copy; This project is open source and available under the MIT License.</p>
+  </footer>
 
-    <!-- Link to JS file -->
-    <script src="page_structure/script.js">
-    </script>
-
-  </body>
+  <script src="page_structure/script.js"></script>
+</body>
 </html>
