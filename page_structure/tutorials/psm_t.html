@@ -1,12 +1,46 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="dark-mode">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Pauli Spin Matrix Commutators Tutorial</title>
-  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Tutorial - Pauli Spin Matrices in GNU Octave</title>
   <link rel="stylesheet" href="../style.css" />
 
+    <style>
+    /* Copy button styles */
+    .copy-btn {
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0 6px;
+      vertical-align: middle;
+      color: #555;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      user-select: none;
+    }
+    .copy-btn:hover .icon-copy {
+      color: #000;
+    }
+    .icon-copy {
+      width: 16px;
+      height: 16px;
+      pointer-events: none; /* So click passes to button */
+    }
+    pre.code-block {
+      position: relative;
+      padding-top: 30px; /* space for button */
+    }
+    .copy-btn {
+      position: absolute;
+      top: 6px;
+      right: 6px;
+    }
+  </style>
+
+
+  <!-- LaTex script -->
   <script>
     window.MathJax = {
       tex: {
@@ -20,80 +54,116 @@
     };
   </script>
   <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
-</head>
 
+<!-- Top bar -->
+</head>
 <body>
-  <!-- Header -->
-  <header>
-    <h1 id="t_mainHeading">Calculating Pauli Spin Matrix with our Commutator function in GNU Octave</h1>
-    <p id="t_subHeading">
-      This tutorial demonstrates how to compute the commutator of Pauli spin matrices using a GNU Octave function.
-    </p>
+  <header class="top-nav">
+    <a href="index.html" class="logo">sr-comphysics</a>
+    <nav class="nav-links">
+      <a href="#commutator">Commutator</a>
+      <a href="#pauli_spin">Pauli Matrices</a>
+      <a href="#step_1">Step 1</a>
+      <a href="#step_2">Step 2</a>
+      <a href="#result">Result</a>
+    </nav>
+    <div class="nav-right">
+      <button id="modeToggle" aria-label="Toggle Dark/Light">🌓</button>
+      <button id="contrastToggle" aria-label="Toggle High Contrast">🔳</button>
+      <button id="languageButton" aria-label="Toggle Language">தமிழ்</button>
+      <button id="hamburger" aria-label="Toggle Menu">☰</button>
+    </div>
   </header>
 
-  <main class="tutorial-content">
-    <!-- Commutator Section -->
-    <section class="card" id="commutator">
-      <h2>What is a Commutator?</h2>
+  <!-- Mobile navigation -->
+  <div class="mobile-menu" id="mobileMenu" role="navigation">
+    <button class="close-btn" aria-label="Close Menu">×</button>
+    <a href="#commutator">Commutator</a>
+    <a href="#pauli_spin">Pauli Maatrices</a>
+    <a href="#step_1">Step 1</a>
+    <a href="#step_2">Step 2</a>
+    <a href="#result">Result</a>
+  </div>
+
+  <!-- Main Sections -->
+
+  <!-- Header Section -->
+  <section id="p_header">
+    <h1>Calculating Pauli Spin Matrix with our Commutator function in GNU Octave</h1>
+    <p>
+      This tutorial demonstrates how to compute the commutator of Pauli spin matrices using an GNU Octave function.
+    </p>
+  </section>
+
+  <!-- Commutator Section -->
+  <section id="commutator">
+    <h2>What is a Commutator?</h2>
+    <div class="card">
       <p>In Quantum Mechanics, the commutator of two operators A, B is the operator:</p>
       <p>$$ C = [A, B] = AB - BA $$</p>
-    </section>
+    </div>
+  </section>
 
-    <!-- Pauli Spin Matrices Section -->
-    <section class="card" id="pauli_spin">
-      <h2>Pauli Spin Matrices</h2>
+  <!-- Pauli Spin Matrices Section -->
+  <section id="pauli_spin">
+    <h2>Pauli Spin Matrices</h2>
+    <div class="card">
       <p>The Pauli matrices are complex arrays that arise in the treatment of spin in quantum mechanics.</p>
       <ul>
-        <li>\[
+        <p>\[
           S_x = \frac{\hbar}{2} \begin{pmatrix}
           0 & 1 \\
           1 & 0
           \end{pmatrix}
-          \]</li>
-        <li>\[
+          \]</p>
+        <p>\[
           S_y = \frac{\hbar}{2} \begin{pmatrix}
           0 & -i \\
           i & 0
           \end{pmatrix}
-          \]</li>
-        <li>\[
+          \]</p>
+        <p>\[
           S_z = \frac{\hbar}{2} \begin{pmatrix}
           1 & 0 \\
           0 & -1
           \end{pmatrix}
-          \]</li>
-      </ul>
-      <ul>
+          \]</p>
         <p>but we will work with their unitless equivalents</p>
-        <li>\[
+        <p>\[
           \sigma_x = \begin{pmatrix}
           0 & 1 \\
           1 & 0
           \end{pmatrix}
-          \]</li>
-        <li>\[
+          \]</p>
+        <p>\[
           \sigma_y = \begin{pmatrix}
           0 & -i \\
           i & 0
           \end{pmatrix}
-          \]</li>
-        <li>\[
+          \]</p>
+        <p>\[
           \sigma_z = \begin{pmatrix}
           1 & 0 \\
           0 & -1
           \end{pmatrix}
-          \]</li>
+          \]</p>
       </ul>
-    </section>
+    </div>
+  </section>
 
-    <!-- Step 1 Section -->
-    <section class="card" id="step_1">
-      <h2>Step 1: Define the Commutator Function</h2>
+  <!-- Step 1 Section -->
+  <section id="step_1">
+    <h2>Step 1: Define the Commutator Function</h2>
+    <div class="card">
       <p>Clone the <a href="https://github.com/sr-comphysics/sr-comphysics.github.io/tree/main/comphysics_octave/commutator.m" target="_blank">commutator.m</a> file from the comphysics_octave directory, which contains the code along with its explanation.</p>
       <p> or Create a file named <code>commutator.m</code> with the following content:</p>
-
       <div class="code-block">
-        <button class="copy-btn">Copy</button>
+        <button class="copy-btn" aria-label="Copy code">
+        <svg class="icon-copy" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+          <path d="M10 1H3a2 2 0 0 0-2 2v10h1V3a1 1 0 0 1 1-1h7V1z"/>
+          <path d="M13 3H6a2 2 0 0 0-2 2v10a1 1 0 0 0 1 1h7a2 2 0 0 0 2-2V4a1 1 0 0 0-1-1zm0 12H6V5h7v10z"/>
+        </svg>
+      </button>
         <pre><code>function C = commutator(A, B)
   AB = A * B;
   BA = B * A;
@@ -102,13 +172,21 @@ end
         </code></pre>
       </div>
     </section>
+    </div>
+  </section>
 
-    <!-- Step 2 Section -->
-    <section class="card" id="step_2">
-      <h2>Step 2: Compute Commutators in GNU Octave</h2>
+  <!-- Step 2 Section -->
+  <section id="step_2">
+    <h2>Step 2: Compute Commutators in GNU Octave</h2>
+    <div class="card">
       <p>Open GNU Octave and define the Pauli spin matrices:</p>
       <div class="code-block">
-        <button class="copy-btn">Copy</button>
+        <button class="copy-btn" aria-label="Copy code">
+        <svg class="icon-copy" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+          <path d="M10 1H3a2 2 0 0 0-2 2v10h1V3a1 1 0 0 1 1-1h7V1z"/>
+          <path d="M13 3H6a2 2 0 0 0-2 2v10a1 1 0 0 0 1 1h7a2 2 0 0 0 2-2V4a1 1 0 0 0-1-1zm0 12H6V5h7v10z"/>
+        </svg>
+      </button>
         <pre><code>sigma_x = [0 1; 1 0];
 sigma_y = [0 -1i; 1i 0];
 sigma_z = [1 0; 0 -1];
@@ -116,16 +194,22 @@ sigma_z = [1 0; 0 -1];
       </div>
       <p>Then compute a commutator, for example \([\sigma_x, \sigma_y]\):</p>
       <div class="code-block">
-        <button class="copy-btn">Copy</button>
+        <button class="copy-btn" aria-label="Copy code">
+        <svg class="icon-copy" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+          <path d="M10 1H3a2 2 0 0 0-2 2v10h1V3a1 1 0 0 1 1-1h7V1z"/>
+          <path d="M13 3H6a2 2 0 0 0-2 2v10a1 1 0 0 0 1 1h7a2 2 0 0 0 2-2V4a1 1 0 0 0-1-1zm0 12H6V5h7v10z"/>
+        </svg>
+      </button>
         <pre><code>commutator(sigma_x, sigma_y)
         </code></pre>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- Result Section -->
-    <section class="card" id="result">
-      <h2>Expected Results</h2>
-      <ul>
+  <!-- Result Section -->
+  <section id="result">
+    <h2>Result</h2>
+    <div class="card">
       <div class="code-block">
         <pre><code>>> commutator(sigma_x, sigma_y)
 ans =
@@ -134,40 +218,50 @@ ans =
    0 + 0i   0 - 2i
         </code></pre>
       </div>
-        <li> \(which \ is,\)
-        <li>\([\sigma_x, \sigma_y] = 2i \sigma_z\)</li>
-        <li>\(Similarly, \ for\)
-        <li>\([\sigma_y, \sigma_z] = 2i \sigma_x\)</li>
-        <li>\([\sigma_z, \sigma_x] = 2i \sigma_y\)</li>
+        <p> \(which \ is,\)</p>
+        <p>\([\sigma_x, \sigma_y] = 2i \sigma_z\)</p>
+        <p>\(Similarly, \ for\)</p>
+        <p>\([\sigma_y, \sigma_z] = 2i \sigma_x\)</p>
+        <p>\([\sigma_z, \sigma_x] = 2i \sigma_y\)</p>
       </ul>
-    </section>
+    </div>
+  </section>
 
-  </main>
-
-  <footer id="back_home">
-    <p><a href="../../index.html">← Back to Home</a></p>
+  <footer>
+    <a href="../../index.html">← Back to Home</a>
   </footer>
 
+  <script src="../script.js"></script>
+
   <script>
-    // Toggle mobile menu visibility
-    function toggleMobileMenu() {
-      const menu = document.getElementById('mobileMenu');
-      menu.classList.toggle('show');
-    }
-
-    // Copy button functionality
-    document.querySelectorAll('.copy-btn').forEach(button => {
-      button.addEventListener('click', () => {
-        const codeBlock = button.nextElementSibling.querySelector('code');
-        const text = codeBlock.innerText;
-        navigator.clipboard.writeText(text).then(() => {
-          button.textContent = 'Copied!';
-          setTimeout(() => (button.textContent = 'Copy'), 1500);
+  // Copy button functionality
+  document.querySelectorAll(".copy-btn").forEach(button => {
+    button.addEventListener("click", () => {
+      const codeBlock = button.nextElementSibling;
+      if (codeBlock && codeBlock.tagName.toLowerCase() === "code") {
+        const textToCopy = codeBlock.innerText.trim();
+        navigator.clipboard.writeText(textToCopy).then(() => {
+          // Show success checkmark icon
+          button.innerHTML = `
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="green" viewBox="0 0 16 16">
+              <path d="M13.485 1.929l-7.07 7.07-3.536-3.535-1.415 1.414 4.95 4.95 8.485-8.485-1.414-1.414z"/>
+            </svg>`;
+          setTimeout(() => {
+            // Restore original clipboard icon after 2 seconds
+            button.innerHTML = `
+              <svg class="icon-copy" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                <path d="M10 1H3a2 2 0 0 0-2 2v10h1V3a1 1 0 0 1 1-1h7V1z"/>
+                <path d="M13 3H6a2 2 0 0 0-2 2v10a1 1 0 0 0 1 1h7a2 2 0 0 0 2-2V4a1 1 0 0 0-1-1zm0 12H6V5h7v10z"/>
+              </svg>
+            `;
+          }, 2000);
+        }).catch(err => {
+          alert("Failed to copy text: " + err);
         });
-      });
+      }
     });
+  });
+</script>
 
-  </script>
-    
 </body>
 </html>
