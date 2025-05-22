@@ -79,6 +79,23 @@ document.querySelectorAll('.copy-btn').forEach(button => {
   });
 });
 
+// Load repository README content using marked.js
+const readmeUrl = "https://raw.githubusercontent.com/sr-comphysics/sr-comphysics.github.io/main/README.md";
+fetch(readmeUrl)
+.then((response) => {
+  if (!response.ok) {
+    throw new Error("Network response was not ok: " + response.statusText);
+  }
+  return response.text();
+})
+.then((markdown) => {
+  document.getElementById("readme").innerHTML = marked.parse(markdown);
+})
+.catch((error) => {
+  document.getElementById("readme").innerHTML =
+  "Failed to load README content: " + error.message;
+});
+
 // LANGUAGE TOGGLE
 const langBtn = document.getElementById('languageButton');
 langBtn.addEventListener('click', () => {
@@ -108,10 +125,10 @@ function translateContent(lang) {
       programs: '<h2>Programs</h2> <div class="card"> <p>Explore our dedicated directories for problem solving in physics:</p> <ul> <li><a href="https://github.com/sr-comphysics/sr-comphysics.github.io/tree/main/comphysics_python" target="_blank">Python Programs</a></li> <li><a href="https://github.com/sr-comphysics/sr-comphysics.github.io/tree/main/comphysics_c" target="_blank">C Programs</a></li> <li><a href="https://github.com/sr-comphysics/sr-comphysics.github.io/tree/main/comphysics_cpp" target="_blank">C++ Programs</a></li> <li><a href="https://github.com/sr-comphysics/sr-comphysics.github.io/tree/main/comphysics_octave" target="_blank">GNU Octave Programs</a></li> <li><a href="https://github.com/sr-comphysics/sr-comphysics.github.io/tree/main/comphysics_julia" target="_blank">Julia Programs</a></li> </ul> <p>View the entire repository <a href="https://github.com/sr-comphysics/sr-comphysics.github.io" target="_blank">here</a>.</p> </div>',
 
       // Tutorial Section
-      tutorial: '<h2>Tutorial</h2> <div class="card"> <p>Here are tutorials for using the code in this repository...</p> <ul> <li><a href="page_structure/tutorials/psm_t.html">Calculating Pauli Spin Matrix with our Commutator function in GNU Octave</a></li> </ul> </div>',
+      tutorial: '<h2>Tutorial</h2> <div class="card"> <p>Here are tutorials for using the code in this repository...</p> <ul> <li><a href="page/tutorial/tutorial.html">Calculating Pauli Spin Matrix with our Commutator function in GNU Octave</a></li> </ul> </div>',
 
       // Repository Section
-      repository: '<h2>Repository Overview</h2> <div class="card"> Loading repository information... </div>',
+      repository: '<h2>Repository Overview</h2> <div class="card" id = "readme"> Loading repository information... </div>',
 
       // About Section
       about: '<h2>About This Site</h2> <div class="card"> <p>This site is dedicated to enthusiasts and professionals interested in computational physics, advanced problem solving, and data analysis.</p> </div>',
@@ -140,10 +157,10 @@ function translateContent(lang) {
       programs: '<h2>நிரல்கள்</h2> <div class="card"> <p>இயற்பியல் சிக்கல்களை கணினி நிரல்கள் மூலம் தீர்வு காண எங்கள் பிரத்யேக மூலவரைவின் கோபுறைகளை கீழே காணலாம்:</p> <ul> <li><a href="https://github.com/sr-comphysics/sr-comphysics.github.io/tree/main/comphysics_python" target="_blank">Python நிரல்கள்</a></li> <li><a href="https://github.com/sr-comphysics/sr-comphysics.github.io/tree/main/comphysics_c" target="_blank">C நிரல்கள்</a></li> <li><a href="https://github.com/sr-comphysics/sr-comphysics.github.io/tree/main/comphysics_cpp" target="_blank">C++ நிரல்கள்</a></li> <li><a href="https://github.com/sr-comphysics/sr-comphysics.github.io/tree/main/comphysics_octave" target="_blank">GNU Octave நிரல்கள்</a></li> <li><a href="https://github.com/sr-comphysics/sr-comphysics.github.io/tree/main/comphysics_julia" target="_blank">Julia நிரல்கள்</a></li> </ul> <p>நிரல்களின் ஒருங்கிணைந்த களஞ்சியத்தை <a href="https://github.com/sr-comphysics/sr-comphysics.github.io" target="_blank">இங்கே காண்க.</a>.</p> </div>',
 
       // Tutorial Section
-      tutorial: '<h2>பயிற்சிகள்</h2> <div class="card"> <p>இந்த களஞ்சியத்தில் உள்ள வரைவுகளை பயன்படுத்துவது குறித்த பயிற்சிகளை இங்கே காணலாம்</p> <ul> <li><a href="page_structure/tutorials/psm_t.html">Calculating Pauli Spin Matrix with our Commutator function in GNU Octave</a></li> </ul> </div>',
+      tutorial: '<h2>பயிற்சிகள்</h2> <div class="card"> <p>இந்த களஞ்சியத்தில் உள்ள வரைவுகளை பயன்படுத்துவது குறித்த பயிற்சிகளை இங்கே காணலாம்</p> <ul> <li><a href="page/tutorial/tutorial.html">Calculating Pauli Spin Matrix with our Commutator function in GNU Octave</a></li> </ul> </div>',
 
       // Repository Section
-      repository: '<h2>களஞ்சியம் பற்றிய சிறு விளக்கம்</h2> <div class="card"> Loading repository information... </div>',
+      repository: '<h2>களஞ்சியம் பற்றிய சிறு விளக்கம்</h2> <div class="card" id = "readme"> Loading repository information... </div>',
 
       // About Section
       about: '<h2>இந்த தளம் பற்றி</h2> <div class="card"> <p>இந்த பக்கம், கணக்கீட்டு இயற்பியல், மேம்பட்ட சிக்கல் தீர்க்கும் திறன் மற்றும் தரவு பகுப்பாய்வு ஆகியவற்றில் ஆர்வமுள்ள ஆர்வலர்கள் மற்றும் வல்லுனர்களுக்காக அர்ப்பணிக்கப்பட்டது.</p> </div>',
