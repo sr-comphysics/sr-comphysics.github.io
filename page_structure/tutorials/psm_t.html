@@ -42,18 +42,20 @@
 
   <!-- LaTex script -->
   <script>
-    window.MathJax = {
-      tex: {
-        inlineMath: [['$', '$'], ['\\(', '\\)']],
-        displayMath: [['$$', '$$'], ['\\[', '\\]']]
-      },
-      svg: { fontCache: 'none' },
-      options: { renderActions: { addMenu: [] } },
-      loader: { load: ['[tex]/ams'] },
-      chtml: { scale: 1 }
-    };
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['\\[', '\\]'], ['$$', '$$']],
+      tags: 'ams',  // enables automatic equation numbering
+      packages: { '[+]': ['ams'] }
+    },
+    loader: { load: ['[tex]/ams'] },
+    options: { renderActions: { addMenu: [] } }
+  };
   </script>
   <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+
+
 
 <!-- Top bar -->
 </head>
@@ -91,65 +93,66 @@
   <section id="p_header">
     <h1>Calculating Pauli Spin Matrix with our Commutator function in GNU Octave</h1>
     <p>
-      This tutorial demonstrates how to compute the commutator of Pauli spin matrices using a GNU Octave function.
+      This tutorial demonstrates how to compute the commutator of Pauli spin matrices using an GNU Octave function.
     </p>
   </section>
 
   <!-- Commutator Section -->
-  <section id="commutator">
-    <h2>What is a Commutator?</h2>
-    <div class="card">
-      <p>In Quantum Mechanics, the commutator of two operators A, B is the operator:</p>
-      <p>$$ C = [A, B] = AB - BA $$</p>
-    </div>
-  </section>
+<section id="commutator">
+  <h2>What is a Commutator?</h2>
+  <div class="card">
+    <p>In Quantum Mechanics, the commutator of two operators A, B is the operator:</p>
+    <p>\begin{equation}
+    C = [A, B] = AB - BA
+    \end{equation}</p>
+  </div>
+</section>
 
-  <!-- Pauli Spin Matrices Section -->
-  <section id="pauli_spin">
-    <h2>Pauli Spin Matrices</h2>
-    <div class="card">
-      <p>The Pauli matrices are complex arrays that arise in the treatment of spin in quantum mechanics.</p>
-      <ul>
-        <p>\[
-          S_x = \frac{\hbar}{2} \begin{pmatrix}
-          0 & 1 \\
-          1 & 0
-          \end{pmatrix}
-          \]</p>
-        <p>\[
-          S_y = \frac{\hbar}{2} \begin{pmatrix}
-          0 & -i \\
-          i & 0
-          \end{pmatrix}
-          \]</p>
-        <p>\[
-          S_z = \frac{\hbar}{2} \begin{pmatrix}
-          1 & 0 \\
-          0 & -1
-          \end{pmatrix}
-          \]</p>
-        <p>but we will work with their unitless equivalents</p>
-        <p>\[
-          \sigma_x = \begin{pmatrix}
-          0 & 1 \\
-          1 & 0
-          \end{pmatrix}
-          \]</p>
-        <p>\[
-          \sigma_y = \begin{pmatrix}
-          0 & -i \\
-          i & 0
-          \end{pmatrix}
-          \]</p>
-        <p>\[
-          \sigma_z = \begin{pmatrix}
-          1 & 0 \\
-          0 & -1
-          \end{pmatrix}
-          \]</p>
-      </ul>
-    </div>
-  </section>
+<!-- Pauli Spin Matrices Section -->
+<section id="pauli_spin">
+  <h2>Pauli Spin Matrices</h2>
+  <div class="card">
+    <p>The Pauli matrices are complex arrays that arise in the treatment of spin in quantum mechanics.</p>
+    <p>\begin{equation}
+    S_x = \frac{\hbar}{2} \begin{pmatrix}
+    0 & 1 \\
+    1 & 0
+    \end{pmatrix}
+    \end{equation}</p>
+    <p>\begin{equation}
+    S_y = \frac{\hbar}{2} \begin{pmatrix}
+    0 & -i \\
+    i & 0
+    \end{pmatrix}
+    \end{equation}</p>
+    <p>\begin{equation}
+    S_z = \frac{\hbar}{2} \begin{pmatrix}
+    1 & 0 \\
+    0 & -1
+    \end{pmatrix}
+    \end{equation}</p>
+    <p>but we will work with their unitless equivalents</p>
+    <p>\begin{equation}
+    \sigma_x = \begin{pmatrix}
+    0 & 1 \\
+    1 & 0
+    \end{pmatrix}
+    \end{equation}</p>
+    <p>\begin{equation}
+    \sigma_y = \begin{pmatrix}
+    0 & -i \\
+    i & 0
+    \end{pmatrix}
+    \end{equation}</p>
+    <p>\begin{equation}
+    \sigma_z = \begin{pmatrix}
+    1 & 0 \\
+    0 & -1
+    \end{pmatrix}
+    \end{equation}</p>
+  </div>
+</section>
+
 
   <!-- Step 1 Section -->
   <section id="step_1">
