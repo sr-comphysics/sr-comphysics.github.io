@@ -308,7 +308,7 @@ body.light-mode footer {
   background-color: #121212;
   color: #dcdcdc;
   border-radius: 6px;
-  padding: 1rem;
+  padding: initial;
   overflow-x: auto;
   margin: 1rem 0;
   font-family: 'Source Code Pro', monospace;
