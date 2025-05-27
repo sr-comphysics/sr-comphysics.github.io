@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en" class="dark-mode">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Tutorial - Diode Current in a DC Circuit Using the Bisection Method</title>
+
+  <!-- Include style.css -->
+  <link rel="stylesheet" href="../style.css" />
+
+  <!-- Include Highlight.js CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/atom-one-dark.min.css">
+
+    <style>
+    /* Copy button styles */
+    .copy-btn {
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0 6px;
+      vertical-align: middle;
+      color: #555;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      user-select: none;
+    }
+    .copy-btn:hover .icon-copy {
+      color: #000;
+    }
+    .icon-copy {
+      width: 16px;
+      height: 16px;
+      pointer-events: none; /* So click passes to button */
+    }
+    pre.code-block {
+      position: relative;
+      padding-top: 30px; /* space for button */
+    }
+
+    pre {
+      padding: initial;
+      border-radius: 5px;
+      background: #121212;
+      overflow: auto;
+    }
+    /* Override the Highlight.js background color */
+    pre code.hljs {
+      background: #121212 !important;
+      }
+
+    .copy-btn {
+      position: absolute;
+      top: 6px;
+      right: 6px;
+    }
+
+    .token.output {
+      color: #8aff80;
+    }
+  </style>
+
+  <!-- LaTex script -->
+  <script>
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['\\[', '\\]'], ['$$', '$$']],
+      tags: 'ams',  // enables automatic equation numbering
+      packages: { '[+]': ['ams'] }
+    },
+    loader: { load: ['[tex]/ams'] },
+    options: { renderActions: { addMenu: [] } }
+  };
+  </script>
+  <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+
+<!-- Top bar -->
+</head>
+<body>
+  <header class="top-nav">
+    <a href="../../index.html" class="logo">sr-comphysics</a>
+
+    <div class="nav-right">
+      <button id="modeToggle" aria-label="Toggle Dark/Light">🌓</button>
+      <button id="contrastToggle" aria-label="Toggle High Contrast">🔳</button>
+      <button id="languageButton" aria-label="Toggle Language">தமிழ்</button>
+      <button id="hamburger" aria-label="Toggle Menu">☰</button>
+    </div>
+  </header>
+
+  <!-- Main Sections -->
+
+  <!-- Header Section -->
+  <section id="p_header">
+    <h1>Solving Diode Current in a DC Circuit Using the Bisection Method (C++ Program Approach)</h1>
+  </section>
+
+  <!-- Question Section -->
+  <section id="question">
+    <h2>Question:</h2>
+    <div class="card">
+    <p>Using the bisection method, find the voltage across a diode $ {V_d} $​ in a series DC circuit with a voltage source, resistor, and diode. The diode current is given by the Shockley equation.</p>
+    <p>Given:</p>
+    <ul>
+      <li>\( V_s = 5\,\mathrm{V} \)</li>
+      <li>\( R = 1000\,\Omega \)</li>
+      <li>\( I_s = 1 \times 10^{-12}\,\mathrm{A} \)</li>
+      <li>\( V_t = 0.02585\,\mathrm{V} \)</li>
+      <li>\( n = 1 \)</li>
+    </ul>
+    </div>
+  </section>
+
+  <!-- Shcokley Diode Equation Section -->
+  <section id="schockley">
+    <h2>Schockley Diode Equation:</h2>
+    <div class="card">
+    <p>The current flowing through a diode is modeled by the Schockley diode equation: </p>
+    <p>\begin{equation}
+      I = I_s \left( e^{\left( \frac{V_d}{nV_t} \right)} - 1 \right)
+      \end{equation}
+    </p>
+    <p>Where:</p>
+    <ul>
+      <li>\( I- Diode \ current \ \mathrm{(A)}\)</li>
+      <li>\( I_s- Reverse \ saturation \ current \ \mathrm{(A)}\)</li>
+      <li>\( V_d- Voltage \ across \ the \ diode \  \mathrm{(V)} \)</li>
+      <li>\( V_t- Thermal \ voltage \ (\approx 0.02585 \mathrm{V} \ at \ room \ temperature) \)</li>
+      <li>\( n- Ideality \ factor \)</li>
+    </ul>
+    </div>
+  </section>
+
+  <!-- Kirchhoff's Voltage Law Section -->
+  <section id="kvl">
+    <h2>Kirchhoff's Voltage Law:</h2>
+    <div class="card">
+    <p>In a simple DC series circuit with a voltage source $ {V_s} $, resisor $ {R} $, and diode, </p>
+    <p>\begin{equation}
+      V_s = I \times R + V_d
+      \end{equation}
+    </p>
+    <p>This expresses the conservation of energy, the supply voltage is dropped across the resistor and the diode.</p>
+    </div>
+  </section>
+
+  <!-- Bisection Section -->
+  <section id="bisection">
+    <h2>Bisection method</h2>
+    <div class="card">
+      <p>From Kirchhoff's Voltage Law,</p>
+      <p>\begin{equation}
+        I = \frac{V_s - V_d}{R}
+        \end{equation}
+      </p>
+      <p>Substituting $ eq(3) $ into the $ eq(1) $, we get,</p>
+      <p>\begin{equation}
+        \frac{V_s - V_d}{R} = I_s \left(e^{\left( \frac{V_d}{nV_t} \right)} - 1 \right)
+        \end{equation}
+      </p>
+      <p>Rewriting this to isolate all terms on one side gives:</p>
+      <p>\begin{equation}
+        f(V_d) = R \cdot I_s \left(e^{V_d/nV_t} -1 \right) + V_d - V_s = 0
+        \end{equation}
+      </p>
+      <p>This is a nonlinear equation in $ V_d $ which will solve numerically using the bisection method.
+    </div>
+  </section>
+
+  <!-- Function Section -->
+  <section id="function">
+    <h2>Bisection Method function for $ V_d $</h2>
+    <div class="card">
+      <p>Solving for $ V_d $ using the Bisection Method, $ let \ V_d = x $</p>
+      <p> The function to slove is, </p>
+      <p>\begin{equation*}
+        f(x) = R \cdot I_s \left(e^{V_d/nV_t} -1 \right) + V_d - V_s = 0
+        \end{equation*}
+      </p>
+    </div>
+  </section>
+
+  <!-- Step 1 Section -->
+  <section id="step_1">
+    <h2>Step 1:</h2>
+    <div class="card">
+      <p>Clone the <a href="https://github.com/sr-comphysics/sr-comphysics.github.io/tree/main/comphysics_cpp/bisection_method.cpp" target="_blank">bisection_method.cpp</a> file from the comphysics_cpp directory, which contains the code along with its explanation.</p>
+      <p> or Create a file named <code>bisection_method.cpp</code> with the following content:</p>
+      <div class="code-block">
+        <button class="copy-btn" aria-label="Copy code">
+        <svg class="icon-copy" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+          <path d="M10 1H3a2 2 0 0 0-2 2v10h1V3a1 1 0 0 1 1-1h7V1z"/>
+          <path d="M13 3H6a2 2 0 0 0-2 2v10a1 1 0 0 0 1 1h7a2 2 0 0 0 2-2V4a1 1 0 0 0-1-1zm0 12H6V5h7v10z"/>
+        </svg>
+      </button>
+        <pre><code>// Include the header file
+#include &lt;iostream&gt
+#include &lt;cmath&gt
+using namespace std;
+
+// Function prototype for f(x) used in the root-finding process.
+double f(double x);
+
+int main()
+{
+    double accu;
+    cout << "\nEnter the accuracy desired (e.g. .01 or 1e-2): ";
+    cin >> accu;
+
+    double x1, x2;
+
+    do
+    {
+        cout << "Enter endpoints of an interval containing a solution: \n";
+        cin >> x1 >> x2;
+    }
+    while (f(x1) * f(x2) >= 0.0);
+
+    double width = x2 - x1, x3, f_x3;
+
+    while (width / 2.0 > accu)
+    {
+        x3 = (x1 + x2) / 2.0;
+        f_x3 = f(x3);
+
+        if (f(x1) * f_x3 < 0.0)
+            x2 = x3;
+        else
+            x1 = x3;
+
+        width /= 2.0;
+    }
+
+    cout << "\n-->" << x3 << " is an approximate solution of "
+         << "f(x) = 0, to within " << accu << endl;
+
+    return 0;
+}
+
+// Definition of the function f(x):
+// Function representing the diode circuit equation f(x)
+double f(double Vd)
+{
+    const double Is = 1e-12;     // Reverse saturation current (A)
+    const double n = 1.0;        // Ideality factor
+    const double Vt = 0.02585;   // Thermal voltage (V)
+    const double R = 1000.0;     // Resistance (Ohms)
+    const double Vs = 5.0;       // Supply voltage (V)
+
+    return R * Is * (exp(Vd / (n * Vt)) - 1) + Vd - Vs;
+}</code></pre>
+      </div>
+    <p>If you are cloning the bisection_method.cpp file from our repository, make sure to modify the function defined below the comment <code>// Definition of the function f(x):</code>.</p>
+    <p>Replace: </p>
+    <div class="code-block">
+    <pre><code>// Definition of the function f(x):
+// f(x) = x^3 + x - 5, which models the nonlinear equation to be solved.
+double f(double x)
+{
+    return pow(x, 3) + x - 5;
+}</code></pre>
+</div>
+    <p>With: </p>
+    <div class="code-block">
+        <button class="copy-btn" aria-label="Copy code">
+        <svg class="icon-copy" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+          <path d="M10 1H3a2 2 0 0 0-2 2v10h1V3a1 1 0 0 1 1-1h7V1z"/>
+          <path d="M13 3H6a2 2 0 0 0-2 2v10a1 1 0 0 0 1 1h7a2 2 0 0 0 2-2V4a1 1 0 0 0-1-1zm0 12H6V5h7v10z"/>
+        </svg>
+      </button>
+        <pre><code>// Definition of the function f(x):
+// Function representing the diode circuit equation f(x)
+double f(double Vd)
+{
+    const double Is = 1e-12;     // Reverse saturation current (A)
+    const double n = 1.0;        // Ideality factor
+    const double Vt = 0.02585;   // Thermal voltage (V)
+    const double R = 1000.0;     // Resistance (Ohms)
+    const double Vs = 5.0;       // Supply voltage (V)
+
+    return R * Is * (exp(Vd / (n * Vt)) - 1) + Vd - Vs;
+}
+        </code></pre>
+      </div>
+    </section>
+    </div>
+  </section>
+
+  <!-- Step 2 Section -->
+  <section id="step_2">
+    <h2>Step 2: Compile and Run</h2>
+    <div class="card">
+      <p>Compile with: </p>
+      <div class="code-block">
+        <button class="copy-btn" aria-label="Copy code">
+        <svg class="icon-copy" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+          <path d="M10 1H3a2 2 0 0 0-2 2v10h1V3a1 1 0 0 1 1-1h7V1z"/>
+          <path d="M13 3H6a2 2 0 0 0-2 2v10a1 1 0 0 0 1 1h7a2 2 0 0 0 2-2V4a1 1 0 0 0-1-1zm0 12H6V5h7v10z"/>
+        </svg>
+      </button>
+        <pre><code>g++ -o bisection_method bisection_method.cpp
+        </code></pre>
+      </div>
+      <p>Run the program: </p>
+      <div class="code-block">
+        <button class="copy-btn" aria-label="Copy code">
+        <svg class="icon-copy" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+          <path d="M10 1H3a2 2 0 0 0-2 2v10h1V3a1 1 0 0 1 1-1h7V1z"/>
+          <path d="M13 3H6a2 2 0 0 0-2 2v10a1 1 0 0 0 1 1h7a2 2 0 0 0 2-2V4a1 1 0 0 0-1-1zm0 12H6V5h7v10z"/>
+        </svg>
+      </button>
+        <pre><code>./bisection_method
+        </code></pre>
+      </div>
+    </div>
+  </section>
+
+  <!-- Result Section -->
+  <section id="result">
+    <h2>Result</h2>
+    <div class="card">
+      <div class="code-block">
+      <code><span class="output"><li>Enter the accuracy desired(e.g. 1e-6): 1e-6</li>
+<li>Enter the endpoints of an interval containing a solution (e.g. 0 5):</li>
+<li>0</li>
+<li>5</li>
+
+<li>-->0.574147 V is approximate diode voltage (Vd),
+    computed to within an accuracy of 1e-06</li>
+
+<li>Process returned 0 (0x0) execution time: 7.493 s</li>
+<li>Press Enter to continue</li></span>
+</code>
+      </div>
+  </section>
+
+  <footer>
+    <a href="../../index.html">← Back to Home</a>
+  </footer>
+
+  <script src="../script.js"></script>
+
+  <script>
+  // Copy button functionality
+  document.querySelectorAll(".copy-btn").forEach(button => {
+    button.addEventListener("click", () => {
+      const codeBlock = button.nextElementSibling;
+      if (codeBlock && codeBlock.tagName.toLowerCase() === "code") {
+        const textToCopy = codeBlock.innerText.trim();
+        navigator.clipboard.writeText(textToCopy).then(() => {
+          // Show success checkmark icon
+          button.innerHTML = `
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="green" viewBox="0 0 16 16">
+              <path d="M13.485 1.929l-7.07 7.07-3.536-3.535-1.415 1.414 4.95 4.95 8.485-8.485-1.414-1.414z"/>
+            </svg>`;
+          setTimeout(() => {
+            // Restore original clipboard icon after 2 seconds
+            button.innerHTML = `
+              <svg class="icon-copy" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                <path d="M10 1H3a2 2 0 0 0-2 2v10h1V3a1 1 0 0 1 1-1h7V1z"/>
+                <path d="M13 3H6a2 2 0 0 0-2 2v10a1 1 0 0 0 1 1h7a2 2 0 0 0 2-2V4a1 1 0 0 0-1-1zm0 12H6V5h7v10z"/>
+              </svg>
+            `;
+          }, 2000);
+        }).catch(err => {
+          alert("Failed to copy text: " + err);
+        });
+      }
+    });
+  });
+</script>
+
+<!-- Include Highlight.js library -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+<!-- Include C++ language definition (usually auto-detected but can be loaded explicitly) -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/cpp.min.js"></script>
+<script>
+  // Initialize Highlight.js
+  hljs.highlightAll();
+</script>
+
+
+</body>
+</html>
