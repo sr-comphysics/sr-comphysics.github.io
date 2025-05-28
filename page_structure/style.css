@@ -64,6 +64,14 @@ body.light-mode .top-nav {
   color: inherit;
 }
 
+.logo img {
+  height: 40px;        /* Set a fixed height that fits within your nav */
+  width: auto;         /* Maintain aspect ratio */
+  vertical-align: middle; /* Align with text (if any) */
+  display: block;      /* Eliminates bottom whitespace sometimes present on inline images */
+}
+
+
 /* Nav Links (Desktop) */
 .nav-links {
   display: flex;
