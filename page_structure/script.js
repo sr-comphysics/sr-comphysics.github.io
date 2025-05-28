@@ -79,21 +79,32 @@ document.querySelectorAll('.copy-btn').forEach(button => {
   });
 });
 
-// Load repository README content using marked.js
-const readmeUrl = "https://raw.githubusercontent.com/sr-comphysics/sr-comphysics.github.io/main/README.md";
-fetch(readmeUrl)
-.then((response) => {
+// Load repository README content
+document.addEventListener("DOMContentLoaded", function() {
+  // The element where the README will be rendered
+  const readmeDiv = document.getElementById('readme');
+
+  // URL to the raw README file from your repository.
+  // Replace "yourusername", "yourrepo", and branch "main" as needed.
+  const readmeURL = "https://raw.githubusercontent.com/sr-comphysics/sr-comphysics.github.io/main/README.md";
+
+  // Fetch the raw README file
+  fetch(readmeURL)
+  .then(response => {
     if (!response.ok) {
-        throw new Error("Network response was not ok: " + response.statusText);
+      throw new Error(`HTTP error! Status: ${response.status}`);
     }
     return response.text();
-})
-.then((markdown) => {
-    document.getElementById("readme").innerHTML = marked.parse(markdown);
-})
-.catch((error) => {
-    document.getElementById("readme").innerHTML =
-    "Failed to load README content: " + error.message;
+  })
+  .then(markdownText => {
+    // Convert the Markdown string to HTML using marked.js
+    const htmlContent = marked(markdownText);
+    readmeDiv.innerHTML = htmlContent;
+  })
+  .catch(error => {
+    console.error("Error fetching README:", error);
+    readmeDiv.innerHTML = "Error loading repository information. Please try again later.";
+  });
 });
 
 // LANGUAGE TOGGLE
@@ -119,13 +130,13 @@ function translateContent(lang) {
 
 
       // Header Section
-      header: '<h1>Welcome to the Computational Physics Hub</h1> <p>Exploring Problem Solving and Data Analysis with Python, GNU Octave, Julia, C, and C++</p>',
+      header: '<h1>Welcome to the Code Collider: A page for Computational Physics</h1> <p>Exploring Problem Solving and Data Analysis with Python, GNU Octave, Julia, C, and C++</p>',
 
       // Programs Section
       programs: '<h2>Programs</h2> <div class="card"> <p>Explore our dedicated directories for problem solving in physics:</p> <ul> <li><a href="https://github.com/sr-comphysics/sr-comphysics.github.io/tree/main/comphysics_python" target="_blank">Python Programs</a></li> <li><a href="https://github.com/sr-comphysics/sr-comphysics.github.io/tree/main/comphysics_c" target="_blank">C Programs</a></li> <li><a href="https://github.com/sr-comphysics/sr-comphysics.github.io/tree/main/comphysics_cpp" target="_blank">C++ Programs</a></li> <li><a href="https://github.com/sr-comphysics/sr-comphysics.github.io/tree/main/comphysics_octave" target="_blank">GNU Octave Programs</a></li> <li><a href="https://github.com/sr-comphysics/sr-comphysics.github.io/tree/main/comphysics_julia" target="_blank">Julia Programs</a></li> </ul> <p>View the entire repository <a href="https://github.com/sr-comphysics/sr-comphysics.github.io" target="_blank">here</a>.</p> </div>',
 
       // Tutorial Section
-      tutorial: '<h2>Tutorial</h2> <div class="card"> <p>Here are tutorials for using the code in this repository...</p> <ul> <li><a href="page_structure/tutorials/psm_t.html">Calculating Pauli Spin Matrix with our Commutator function in GNU Octave</a></li><li><a href="page_structure/tutorials/bmc_t.html">Solving Diode Current in a DC Circuit Using the Bisection Method (C++ Program Approach)</a></li> </ul> </div>',
+      tutorial: '<h2>Tutorial</h2> <div class="card"> <p>Here are tutorials for using the code in this repository...</p> <ul> <li><a href="page/tutorials/psm_t.html">Calculating Pauli Spin Matrix with our Commutator function in GNU Octave</a></li><li><a href="page_structure/tutorials/bmc_t.html">Solving Diode Current in a DC Circuit Using the Bisection Method (C++ Program Approach)</a></li> </ul> </div>',
 
       // Repository Section
       repoTitle: 'Repository Overview',
@@ -151,13 +162,13 @@ function translateContent(lang) {
       mobileMenu: '<button class="close-btn" aria-label="Close Menu">×</button> <a href="#programs">நிரல்கள்</a> <a href="#tutorial">பயிற்சிகள்</a> <a href="#repository">களஞ்சியம்</a> <a href="#about">தளம் பற்றி</a> <a href="#contact">தொடர்பு கொள்ள</a>',
 
 
-      header: '<h1>கணக்கீட்டு இயற்பியல் மையத்திற்கு உங்களை வரவேற்கிறோம்</h1> <p>Python, GNU Octave, Julia, C மற்றும் C++ உடன் இயற்பியல் சிக்கல்களுக்கு தீர்வு காணுதல் மற்றும் தரவு பகுப்பாய்வுகள் குறித்து ஆராய்வோம்.',
+      header: '<h1>நிரலாக்க மோதுவி: கணக்கீட்டு இயற்பியல் களஞ்சியதிற்கு உங்களை வரவேற்கிறோம்</h1> <p>Python, GNU Octave, Julia, C மற்றும் C++ உடன் இயற்பியல் சிக்கல்களுக்கு தீர்வு காணுதல் மற்றும் தரவு பகுப்பாய்வுகள் குறித்து ஆராய்வோம்.',
 
       // Programs Section
       programs: '<h2>நிரல்கள்</h2> <div class="card"> <p>இயற்பியல் சிக்கல்களை கணினி நிரல்கள் மூலம் தீர்வு காண எங்கள் பிரத்யேக மூலவரைவின் கோபுறைகளை கீழே காணலாம்:</p> <ul> <li><a href="https://github.com/sr-comphysics/sr-comphysics.github.io/tree/main/comphysics_python" target="_blank">Python நிரல்கள்</a></li> <li><a href="https://github.com/sr-comphysics/sr-comphysics.github.io/tree/main/comphysics_c" target="_blank">C நிரல்கள்</a></li> <li><a href="https://github.com/sr-comphysics/sr-comphysics.github.io/tree/main/comphysics_cpp" target="_blank">C++ நிரல்கள்</a></li> <li><a href="https://github.com/sr-comphysics/sr-comphysics.github.io/tree/main/comphysics_octave" target="_blank">GNU Octave நிரல்கள்</a></li> <li><a href="https://github.com/sr-comphysics/sr-comphysics.github.io/tree/main/comphysics_julia" target="_blank">Julia நிரல்கள்</a></li> </ul> <p>நிரல்களின் ஒருங்கிணைந்த களஞ்சியத்தை <a href="https://github.com/sr-comphysics/sr-comphysics.github.io" target="_blank">இங்கே காண்க.</a>.</p> </div>',
 
       // Tutorial Section
-      tutorial: '<h2>பயிற்சிகள்</h2> <div class="card"> <p>இந்த களஞ்சியத்தில் உள்ள வரைவுகளை பயன்படுத்துவது குறித்த பயிற்சிகளை இங்கே காணலாம்</p> <ul> <li><a href="page_structure/tutorials/psm_t.html">Calculating Pauli Spin Matrix with our Commutator function in GNU Octave</a></li><li><a href="page_structure/tutorials/bmc_t.html">Solving Diode Current in a DC Circuit Using the Bisection Method (C++ Program Approach)</a></li> </ul> </div>',
+      tutorial: '<h2>பயிற்சிகள்</h2> <div class="card"> <p>இந்த களஞ்சியத்தில் உள்ள வரைவுகளை பயன்படுத்துவது குறித்த பயிற்சிகளை இங்கே காணலாம்</p> <ul> <li><a href="page/tutorials/psm_t.html">Calculating Pauli Spin Matrix with our Commutator function in GNU Octave</a></li><li><a href="page_structure/tutorials/bmc_t.html">Solving Diode Current in a DC Circuit Using the Bisection Method (C++ Program Approach)</a></li> </ul> </div>',
 
       // Repository Section
       repoTitle: 'களஞ்சியம் பற்றிய சிறு விளக்கம்',
