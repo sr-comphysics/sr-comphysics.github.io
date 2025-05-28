@@ -79,34 +79,22 @@ document.querySelectorAll('.copy-btn').forEach(button => {
   });
 });
 
-// Load repository README content
-document.addEventListener("DOMContentLoaded", function() {
-  // The element where the README will be rendered
-  const readmeDiv = document.getElementById('readme');
-
-  // URL to the raw README file from your repository.
-  // Replace "yourusername", "yourrepo", and branch "main" as needed.
-  const readmeURL = "https://raw.githubusercontent.com/sr-comphysics/sr-comphysics.github.io/main/README.md";
-
-  // Fetch the raw README file
-  fetch(readmeURL)
-  .then(response => {
+// Load repository README content using marked.js
+const readmeUrl = "https://raw.githubusercontent.com/sr-comphysics/sr-comphysics.github.io/main/README.md";
+fetch(readmeUrl)
+.then((response) => {
     if (!response.ok) {
-      throw new Error(`HTTP error! Status: ${response.status}`);
+        throw new Error("Network response was not ok: " + response.statusText);
     }
     return response.text();
-  })
-  .then(markdownText => {
-    // Convert the Markdown string to HTML using marked.js
-    const htmlContent = marked(markdownText);
-    readmeDiv.innerHTML = htmlContent;
-  })
-  .catch(error => {
-    console.error("Error fetching README:", error);
-    readmeDiv.innerHTML = "Error loading repository information. Please try again later.";
-  });
+})
+.then((markdown) => {
+    document.getElementById("readme").innerHTML = marked.parse(markdown);
+})
+.catch((error) => {
+    document.getElementById("readme").innerHTML =
+    "Failed to load README content: " + error.message;
 });
-
 // LANGUAGE TOGGLE
 const langBtn = document.getElementById('languageButton');
 langBtn.addEventListener('click', () => {
